@@ -20,6 +20,8 @@ namespace Tangerine
         [SerializeField] private float m_MoveSpeed = 3f;
         [SerializeField] private float m_MoveDeadZone = 0.1f;
         [Header("Input")]
+        [SerializeField] private Rigidbody m_Rigidbody = null;
+        [Header("Input")]
         [SerializeField] private InputActionReference m_InputAxis2DLeft = null;
         [SerializeField] private InputActionReference m_InputAxis2DRight = null;
         [SerializeField] private Transform m_RootTrans = null;
@@ -32,11 +34,39 @@ namespace Tangerine
         void Start()
         {
             if (m_RootTrans == null) m_RootTrans = this.transform;
+
+            try
+            {
+                m_Rigidbody = this.GetComponent<Rigidbody>();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
+                if (m_Rigidbody == null)
+                {
+                    Debug.Log("No Rigidbody Component");
+                }
+            }
+
+            // m_InputAxis2DLeft.action.started += ctx => OnMove();
+            // m_InputAxis2DLeft.action.canceled += ctx => OnMove();
+            // m_InputAxis2DRight.action.started += ctx => OnMove();
+            // m_InputAxis2DRight.action.canceled += ctx => OnMove();
         }
+        
 
 
         // Update is called once per frame
         void Update()
+        {
+            if (m_EnableMove)
+            {
+                OnMove();
+            }
+            //OnNoneRigidbodyMovement();
+
+        }
+        private void OnNoneRigidbodyMovement()
         {
             if (m_EnableMove)
             {
@@ -46,11 +76,91 @@ namespace Tangerine
             {
                 updateRotate();
             }
-
         }
         #endregion
 
-        #region Move(NoneRigidbody)
+        #region movement(Rigidbody)
+        private void OnMove()
+        {
+            Vector2 axisDirL = m_InputAxis2DLeft.action.ReadValue<Vector2>();
+            Vector2 axisDirR = m_InputAxis2DRight.action.ReadValue<Vector2>();
+            bool isLeftMove = axisDirL.magnitude > m_MoveDeadZone;
+            bool isRightMove = axisDirR.magnitude > m_MoveDeadZone;
+            if (m_EnableMove && m_EnableRotate)
+            {
+                if (isLeftMove)
+                {
+                    MoveByRigidbody(axisDirL);
+                }
+                else
+                {
+                    m_direct = 0;
+                }
+
+            }
+            else if (m_EnableMove && !m_EnableRotate)
+            {
+                Vector2 axisDir = new Vector2(0, 0);
+                if (isLeftMove && !isRightMove)
+                {
+                    MoveByRigidbody(axisDirL);
+                }
+                else if (!isLeftMove && isRightMove)
+                {
+                    MoveByRigidbody(axisDirR);
+                }
+                else if (isLeftMove && isRightMove)
+                {
+                    bool isLeftHorizontal = math.abs(axisDirL.x) > math.abs(axisDirR.x);
+                    bool isLeftVertical = math.abs(axisDirL.y) > math.abs(axisDirR.y);
+
+                    if (isLeftHorizontal && isLeftVertical)
+                    {
+                        MoveByRigidbody(axisDirL);
+                    }
+                    else if (isLeftHorizontal && !isLeftVertical)
+                    {
+                        MoveByRigidbody(new Vector2(axisDirL.x, axisDirR.y));
+                    }
+                    else if (!isLeftHorizontal && isLeftVertical)
+                    {
+                        MoveByRigidbody(new Vector2(axisDirR.x, axisDirL.y));
+                    }
+                    else
+                    {
+                        MoveByRigidbody(axisDirR);
+                    }
+                }
+                else
+                {
+                    m_direct = 0;
+                }
+
+            }
+        }
+        private void MoveByRigidbody(Vector2 axisDir)
+        {
+            float deltaDeg = Vector2.SignedAngle(Vector2.up, axisDir);
+
+            Vector3 headDir3 = m_HeadTrans.forward;
+            Vector2 headDir2 = new Vector2(headDir3.x, headDir3.z);
+            float headDeg = Vector2.SignedAngle(Vector2.right, headDir2);
+
+            float finalRad = (headDeg + deltaDeg) * Mathf.Deg2Rad;
+            Vector3 MoveDir = new Vector3(Mathf.Cos(finalRad), 0, Mathf.Sin(finalRad));
+
+            //Vector3 hDirection = Vector3.ProjectOnPlane(headDir3,Vector3.up);
+            float MoveAngle = Vector3.SignedAngle(MoveDir, headDir3, Vector3.up);
+            m_direct = GetDirect(MoveAngle);
+
+            m_realSpeed = axisDir.magnitude * m_MoveSpeed;
+            Vector3 playerHorizontalVelocity= m_Rigidbody.velocity;
+            playerHorizontalVelocity.y = 0f;
+            m_Rigidbody.AddForce((m_realSpeed * MoveDir)-playerHorizontalVelocity, ForceMode.VelocityChange);
+        }
+        #endregion
+
+        #region Movement(NoneRigidbody)
         private void updateMove()
         {
             Vector2 axisDirL = m_InputAxis2DLeft.action.ReadValue<Vector2>();
@@ -131,9 +241,7 @@ namespace Tangerine
             m_RootTrans.Translate(m_realSpeed * Time.deltaTime * MoveDir, Space.World);
 
         }
-        #endregion
 
-        #region Rotate(NoneRigidbody)
         private void updateRotate()
         {
             Vector2 axisDirR = m_InputAxis2DRight.action.ReadValue<Vector2>();

@@ -1,0 +1,62 @@
+{
+    "name": "MirrorVR_Tangerine",
+    "maps": [
+        {
+            "name": "LeftHand",
+            "id": "d0994665-9af1-47f1-96d0-c33b0edf952d",
+            "actions": [
+                {
+                    "name": "Primary2DAxis",
+                    "type": "Value",
+                    "id": "1c163fb0-9ef8-44a7-8ac2-a443c428718a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "16f320a5-c173-4b1b-a7b4-73996987d80c",
+                    "path": "<XRController>{LeftHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Primary2DAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "RightHand",
+            "id": "e48bd142-4d4c-46ae-a88a-f0e8ec48f7de",
+            "actions": [
+                {
+                    "name": "Primary2DAxis",
+                    "type": "Value",
+                    "id": "d333bbed-7aad-4b10-881c-95de3c98c2c8",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "283cdb22-f257-4d37-8e65-44ae93f84983",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Primary2DAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

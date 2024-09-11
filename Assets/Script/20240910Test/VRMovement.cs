@@ -50,7 +50,7 @@ namespace Tangerine
         }
         #endregion
 
-        #region Move
+        #region Move(NoneRigidbody)
         private void updateMove()
         {
             Vector2 axisDirL = m_InputAxis2DLeft.action.ReadValue<Vector2>();
@@ -58,7 +58,7 @@ namespace Tangerine
             Vector2 axisDirR = m_InputAxis2DRight.action.ReadValue<Vector2>();
             bool isLeftMove = axisDirL.magnitude > m_MoveDeadZone;
             bool isRightMove = axisDirR.magnitude > m_MoveDeadZone;
-            Debug.Log("axisDirR.magnitude:"+axisDirR.magnitude);
+            //Debug.Log("axisDirR.magnitude:"+axisDirR.magnitude);
 
             if (m_EnableMove && m_EnableRotate)
             {
@@ -133,11 +133,11 @@ namespace Tangerine
         }
         #endregion
 
-        #region Rotate
+        #region Rotate(NoneRigidbody)
         private void updateRotate()
         {
             Vector2 axisDirR = m_InputAxis2DRight.action.ReadValue<Vector2>();
-            //Debug.Log("axisDirR.X:"+axisDirR.x);
+            //Debug.Log ("axisDirR.X:"+axisDirR.x);
             rotateByAxisDir(axisDirR.x * m_RotateSpeed * Time.deltaTime);
         }
         private void rotateByAxisDir(float axisDir_Horizontal)

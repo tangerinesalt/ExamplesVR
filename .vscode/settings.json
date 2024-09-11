@@ -51,5 +51,8 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ExamplesVR_20240906.sln"
+    "dotnet.defaultSolution": "ExamplesVR_20240906.sln",
+    "editor.minimap.autohide": false,
+    "editor.minimap.maxColumn": 180,
+    "editor.minimap.sectionHeaderFontSize": 10
 }

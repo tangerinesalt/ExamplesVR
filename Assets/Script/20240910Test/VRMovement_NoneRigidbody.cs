@@ -9,19 +9,19 @@ using Tangerine;
 
 namespace Tangerine
 {
-    public class VRMovement : MonoBehaviour
+    public class VRMovement_noneRigidbody : MonoBehaviour
     {
         [Header("Rotate")]
-        [SerializeField] private bool m_EnableRotate = false;
+        [SerializeField] private bool m_EnableRotate = false ;
         [SerializeField] private float m_RotateSpeed = 10f;
         [Header("Move")]
         [SerializeField] private bool m_EnableMove = true;
-        [SerializeField] private bool m_EnableMoveWithRigidbody = true;
+        //[SerializeField] private bool m_EnableMoveWithRigidbody = true ;
         //[SerializeField] private bool m_EnableMoveOnlyLeft = true;
         [SerializeField] private float m_MoveSpeed = 3f;
         [SerializeField] private float m_MoveDeadZone = 0.1f;
         [Header("Input")]
-        [SerializeField] private Rigidbody m_Rigidbody = null;
+        //[SerializeField] private Rigidbody m_Rigidbody = null;
         [Header("Input")]
         [SerializeField] private InputActionReference m_InputAxis2DLeft = null;
         [SerializeField] private InputActionReference m_InputAxis2DRight = null;
@@ -36,22 +36,23 @@ namespace Tangerine
         {
             if (m_RootTrans == null) m_RootTrans = this.transform;
 
-            
-                try
-                {
-                    m_Rigidbody = this.GetComponent<Rigidbody>();
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError(e.Message);
-                    if (m_Rigidbody == null)
-                    {
-                        //Debug.Log("Open \"m_EnableMoveWithRigidbod\",but None Rigidbody Component");
-                        Debug.LogError("Please Add Rigidbody Component:Open \"m_EnableMoveWithRigidbod\",but None Rigidbody Component");
-                    }
-                }
-            
+            // try
+            // {
+            //     m_Rigidbody = this.GetComponent<Rigidbody>();
+            // }
+            // catch (Exception e)
+            // {
+            //     Debug.LogError(e.Message);
+            //     if (m_Rigidbody == null)
+            //     {
+            //         Debug.Log("No Rigidbody Component");
+            //     }
+            // }
 
+            // m_InputAxis2DLeft.action.started += ctx => OnMove();
+            // m_InputAxis2DLeft.action.canceled += ctx => OnMove();
+            // m_InputAxis2DRight.action.started += ctx => OnMove();
+            // m_InputAxis2DRight.action.canceled += ctx => OnMove();
         }
 
 
@@ -155,34 +156,25 @@ namespace Tangerine
             m_direct = GetDirect(MoveAngle);
 
             m_realSpeed = axisDir.magnitude * m_MoveSpeed;
-            bool isRigidbodyMove = false;
-            //m_RootTrans.Translate(m_realSpeed * Time.deltaTime * MoveDir, Space.World);
-            if (!m_EnableMoveWithRigidbody)
-            {
-                isRigidbodyMove = false;
-                if ( !isRigidbodyMove && m_Rigidbody != null)
-                {
-                    if (!m_Rigidbody.isKinematic)
-                    {
-                        m_Rigidbody.isKinematic = true;
-                    }
-                    isRigidbodyMove = true;
-                }
-
-                m_RootTrans.Translate(m_realSpeed * Time.deltaTime * MoveDir, Space.World);
-            }
-            else
-            {
-                isRigidbodyMove = true;
-                if (isRigidbodyMove&&m_Rigidbody.isKinematic)
-                {
-                    m_Rigidbody.isKinematic = false;
-                    isRigidbodyMove = false;
-                }
-                Vector3 playerHorizontalVelocity = m_Rigidbody.velocity;
-                playerHorizontalVelocity.y = 0f;
-                m_Rigidbody.AddForce((m_realSpeed * MoveDir) - playerHorizontalVelocity, ForceMode.VelocityChange);
-            }
+            m_RootTrans.Translate(m_realSpeed * Time.deltaTime * MoveDir, Space.World);
+            // if (!m_EnableMoveWithRigidbody)
+            // {
+            //     if(!m_Rigidbody.isKinematic)
+            //     {
+            //         m_Rigidbody.isKinematic = true;
+            //     }
+            //     m_RootTrans.Translate(m_realSpeed * Time.deltaTime * MoveDir, Space.World);
+            // }
+            // else
+            // {
+            //     if (m_Rigidbody.isKinematic)
+            //     {
+            //         m_Rigidbody.isKinematic = false;
+            //     }
+            //     Vector3 playerHorizontalVelocity = m_Rigidbody.velocity;
+            //     playerHorizontalVelocity.y = 0f;
+            //     m_Rigidbody.AddForce((m_realSpeed * MoveDir) - playerHorizontalVelocity, ForceMode.VelocityChange);
+            // }
         }
 
         private void updateRotate()

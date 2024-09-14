@@ -6,25 +6,26 @@ using Mirror;
 using System;
 using Unity.Mathematics;
 using Tangerine;
+using Unity.VisualScripting;
 
 namespace Tangerine
 {
     public class VRMovement_ByCharacterController : MonoBehaviour
     {
         [Header("Rotate")]
-        [SerializeField] private bool m_EnableRotate = false ;
+        [SerializeField] private bool m_EnableRotate = false;
         [SerializeField] private float m_RotateSpeed = 10f;
-        
+
         [Header("Move")]
         [SerializeField] private bool m_EnableMove = true;
-        [SerializeField] private  CharacterController m_characterController;
+        [SerializeField] private CharacterController m_characterController;
         //[SerializeField] private bool m_isGrounded = false;
         [SerializeField] private float m_MoveSpeed = 3f;
         [SerializeField] private float m_MoveDeadZone = 0.1f;
-        
+
         [Header("Fall")]
         [SerializeField] private float m_gravity = 9.8f;
-        private bool m_isFAll=false;
+        private bool m_isFAll = false;
         private float m_gravityRation = 0.01f;
         private float m_FallSpeed = 0f;
 
@@ -33,15 +34,18 @@ namespace Tangerine
         [SerializeField] private InputActionReference m_InputAxis2DRight = null;
         [SerializeField] private Transform m_RootTrans = null;
         [SerializeField] private Transform m_HeadTrans = null;
+        [Header("ModelControl")]
+        [SerializeField] private Transform m_ModelRoot = null;
+        [SerializeField] private Transform m_VRSyncPoint = null;
+        //[SerializeField] private float GroundDifference = 0.1f;
 
         private MoveDirect m_direct = MoveDirect.None;
-
         private float m_realSpeed = 0;
         #region  Unity LifeCycle
         void Start()
         {
             if (m_RootTrans == null) m_RootTrans = this.transform;
-            
+
             try
             {
                 m_characterController = this.GetComponent<CharacterController>();
@@ -70,11 +74,12 @@ namespace Tangerine
         #region Move
         private void OpenActivity()
         {
+            SyncModelPosition();
             if (m_EnableMove)
             {
                 updateMove();
             }
-            
+
             if (m_EnableRotate)
             {
                 updateRotate();
@@ -160,7 +165,7 @@ namespace Tangerine
             m_realSpeed = axisDir.magnitude * m_MoveSpeed;
 
             //m_RootTrans.Translate(m_realSpeed * Time.deltaTime * MoveDir, Space.World);
-            m_characterController.Move(m_realSpeed * Time.deltaTime * MoveDir );
+            m_characterController.Move(m_realSpeed * Time.deltaTime * MoveDir);
             //m_isGrounded = m_characterController.isGrounded;
         }
         #endregion
@@ -177,7 +182,7 @@ namespace Tangerine
             else
             {
                 m_isFAll = true;
-                m_FallSpeed -= m_gravity*m_gravityRation;
+                m_FallSpeed -= m_gravity * m_gravityRation;
             }
             //m_characterController.Move(Vector3.up * m_FallSpeed * Time.deltaTime);
         }
@@ -188,7 +193,7 @@ namespace Tangerine
 
             if (!m_isFAll)
             {
-               return ;
+                return;
             }
             else
             {
@@ -266,6 +271,17 @@ namespace Tangerine
                 return MoveDirect.ForwardRight;
             }
             return 0;
+        }
+        private void SyncModelPosition()
+        {
+            if (m_ModelRoot != null || m_VRSyncPoint != null)
+            {
+                
+                Vector3 Modelpos = m_ModelRoot.position;
+                //m_ModelRoot.position = new Vector3(Modelpos.x, m_VRSyncPoint.position.y-GroundDifference, Modelpos.z);
+                m_ModelRoot.position = new Vector3(Modelpos.x, m_VRSyncPoint.position.y ,Modelpos.z);
+            }
+                
         }
         #endregion
     }

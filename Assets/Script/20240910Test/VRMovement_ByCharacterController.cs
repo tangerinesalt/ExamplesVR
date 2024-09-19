@@ -23,6 +23,9 @@ namespace Tangerine
         [SerializeField] private float m_MoveSpeed = 3f;
         [SerializeField] private float m_MoveDeadZone = 0.1f;
 
+        [Header("Turn")]
+        [SerializeField] private InputActionReference m_InputAxis2DUp = null;
+
         [Header("Fall")]
         [SerializeField] private float m_gravity = 9.8f;
         private bool m_isFAll = false;
@@ -34,6 +37,8 @@ namespace Tangerine
         [SerializeField] private InputActionReference m_InputAxis2DRight = null;
         [SerializeField] private Transform m_RootTrans = null;
         [SerializeField] private Transform m_HeadTrans = null;
+        
+        
         [Header("ModelControl")]
         [SerializeField] private Transform m_ModelRoot = null;
         [SerializeField] private Transform m_VRSyncPoint = null;

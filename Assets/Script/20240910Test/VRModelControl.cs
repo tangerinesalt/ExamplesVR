@@ -5,5 +5,12 @@ using Mirror;
 
 public class VRModelControl : NetworkBehaviour
 {
-   
+   void Start()
+   {
+      if(isLocalPlayer)
+      {
+
+      }
+
+   }
 }

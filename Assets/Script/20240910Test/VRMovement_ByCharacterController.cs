@@ -274,7 +274,11 @@ namespace Tangerine
         }
         private void SyncModelPosition()
         {
-            if (m_ModelRoot != null || m_VRSyncPoint != null)
+            if (m_ModelRoot == null )
+            {
+                return;
+            }
+           else if (m_ModelRoot != null || m_VRSyncPoint != null)
             {
                 
                 Vector3 Modelpos = m_ModelRoot.position;
@@ -282,6 +286,10 @@ namespace Tangerine
                 m_ModelRoot.position = new Vector3(Modelpos.x, m_VRSyncPoint.position.y ,Modelpos.z);
             }
                 
+        }
+        public  void SetModelRoot(Transform modelRoot)
+        {
+            m_ModelRoot = modelRoot;
         }
         #endregion
     }

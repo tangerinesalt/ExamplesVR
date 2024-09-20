@@ -22,9 +22,7 @@ namespace Tangerine
         //[SerializeField] private bool m_isGrounded = false;
         [SerializeField] private float m_MoveSpeed = 3f;
         [SerializeField] private float m_MoveDeadZone = 0.1f;
-
-        [Header("Turn")]
-        [SerializeField] private InputActionReference m_InputAxis2DUp = null;
+        private bool m_isMove = false;
 
         [Header("Fall")]
         [SerializeField] private float m_gravity = 9.8f;
@@ -100,6 +98,7 @@ namespace Tangerine
             bool isLeftMove = axisDirL.magnitude > m_MoveDeadZone;
             bool isRightMove = axisDirR.magnitude > m_MoveDeadZone;
             //Debug.Log("axisDirR.magnitude:"+axisDirR.magnitude);
+            SetMoveStatus(isLeftMove, isRightMove);
 
             if (m_EnableMove && m_EnableRotate)
             {
@@ -151,6 +150,23 @@ namespace Tangerine
 
             }
 
+        }
+
+        private bool SetMoveStatus(bool isLeftMove, bool isRightMove)
+        {
+            if(isLeftMove || isRightMove)
+            {
+                m_isMove=true;
+            }
+            else
+            {
+                m_isMove = false;
+            }
+            return m_isMove;
+        }
+        public bool GetMoveStatus()
+        {
+            return m_isMove;
         }
 
         private void moveByAxisDir(Vector2 axisDir)

@@ -45,7 +45,8 @@ public class VRPrefabControl : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            m_SyncToolPrefabRoot.SetPositionAndRotation(VRMainManager.Instance.GetVRRoot().position, VRMainManager.Instance.GetVRRoot().rotation);
+            //m_SyncToolPrefabRoot.SetPositionAndRotation(VRMainManager.Instance.GetVRRoot().position, VRMainManager.Instance.GetVRRoot().rotation);
+            m_SyncToolPrefabRoot.position = VRMainManager.Instance.GetVRRoot().position;
             m_SyncToolHead.SetPositionAndRotation(VRMainManager.Instance.GetVRHead().position, VRMainManager.Instance.GetVRHead().rotation);
             m_SyncToolLeftHand.SetPositionAndRotation(VRMainManager.Instance.GetVRLeftHand().position, VRMainManager.Instance.GetVRLeftHand().rotation);
             m_SyncToolRightHand.SetPositionAndRotation(VRMainManager.Instance.GetVRRightHand().position, VRMainManager.Instance.GetVRRightHand().rotation);
@@ -96,10 +97,11 @@ public class VRPrefabControl : NetworkBehaviour
     /// </summary>
     public override void OnStartLocalPlayer()
     {
-        // foreach (GameObject obj in m_HidePrefabsObjects)
-        // {
-        //     obj.SetActive(false);
-        // }
+        if(m_IsOpenTestSetting) return;
+        foreach (GameObject obj in m_HidePrefabsObjects)
+        {
+            obj.SetActive(false);
+        }
     }
 
     /// <summary>

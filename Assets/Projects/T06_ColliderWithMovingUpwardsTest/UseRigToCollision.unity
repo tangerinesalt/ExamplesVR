@@ -19123,7 +19123,6 @@ GameObject:
   - component: {fileID: 6313630247079802614}
   - component: {fileID: 1350165178641243989}
   - component: {fileID: 7714277431847921095}
-  - component: {fileID: 7714277431847921092}
   - component: {fileID: 7714277431847921094}
   - component: {fileID: 7714277431847921096}
   - component: {fileID: 7714277431847921097}
@@ -19724,21 +19723,6 @@ Transform:
   - {fileID: 1642850393467389937}
   m_Father: {fileID: 3693181679773163952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7714277431847921092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6570242498838481550}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b2c0223ed3b7748a4e3efb0a427f20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LocomotionProvider: {fileID: 355302670}
-  m_MinHeight: 0
-  m_MaxHeight: Infinity
 --- !u!54 &7714277431847921094
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19831,7 +19815,7 @@ MonoBehaviour:
   m_LocomotionProvider: {fileID: 355302670}
   m_MinHeight: 0
   m_MaxHeight: Infinity
-  m_capsuleCollider: {fileID: 7714277431847921096}
+  m_capsuleCollider: {fileID: 0}
 --- !u!1 &7732535365195113668
 GameObject:
   m_ObjectHideFlags: 0

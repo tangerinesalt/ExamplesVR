@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 public class SingleBehaviour<T> : MonoBehaviour
-    where T : SingleBehaviour<T>
+    where T :MonoBehaviour
 {
     private static T _instance = null;
 

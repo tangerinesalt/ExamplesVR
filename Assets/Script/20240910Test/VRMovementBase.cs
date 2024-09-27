@@ -6,11 +6,10 @@ using Mirror;
 using System;
 using Unity.Mathematics;
 using Tangerine;
-using Unity.VisualScripting;
 
 namespace Tangerine
 {
-    public class VRMovement_ByCharacterController : MonoBehaviour
+    public class VRMovementBase : MonoBehaviour
     {
         [Header("Rotate")]
         [SerializeField] private bool m_EnableRotate = false;
@@ -18,13 +17,13 @@ namespace Tangerine
 
         [Header("Move")]
         [SerializeField] private bool m_EnableMove = true;
-        [SerializeField] private CharacterController m_characterController;
-        //[SerializeField] private bool m_isGrounded = false;
+        [SerializeField] private bool m_EnableMoveWithRigidbody = true;
+        //[SerializeField] private bool m_EnableMoveOnlyLeft = true;
         [SerializeField] private float m_MoveSpeed = 3f;
         [SerializeField] private float m_MoveDeadZone = 0.1f;
-        //private bool m_isMove = false;
+         private bool m_isMove = false;
 
-        [Header("Fall")]
+         [Header("Fall")]
         [SerializeField] private float m_gravity = 9.8f;
         private bool m_isFAll = false;
         private float m_gravityRation = 0.01f;
@@ -35,56 +34,51 @@ namespace Tangerine
         [SerializeField] private InputActionReference m_InputAxis2DRight = null;
         [SerializeField] private Transform m_RootTrans = null;
         [SerializeField] private Transform m_HeadTrans = null;
-
-        [Header("Head Detection")]
-        [SerializeField]private bool m_EnableHeadDetect = false;
-        [SerializeField] private Transform headCheck;
-        [SerializeField] private Vector3 halfExtents = new Vector3(0.4f, 0.5f, 0.4f);
-        [SerializeField] private bool m_IsCollisionForHead = false;
-
+        [SerializeField] private Rigidbody m_Rigidbody = null;
+        
         [Header("ModelControl")]
         [SerializeField] private Transform m_ModelRoot = null;
         [SerializeField] private Transform m_VRSyncPoint = null;
-        //[SerializeField] private float GroundDifference = 0.1f;
-
+        
         private MoveDirect m_direct = MoveDirect.None;
+
         private float m_realSpeed = 0;
-        #region  Unity LifeCycle
+        #region  Unity Cycle
         void Start()
         {
             if (m_RootTrans == null) m_RootTrans = this.transform;
 
-            try
-            {
-                m_characterController = this.GetComponent<CharacterController>();
-                //m_isGrounded = m_characterController.isGrounded;//测试用
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e.Message);
-                if (m_characterController == null)
+            
+                try
                 {
-                    Debug.Log("No CharacterController Component");
+                    m_Rigidbody = this.GetComponent<Rigidbody>();
                 }
-            }
+                catch (Exception e)
+                {
+                    Debug.LogError(e.Message);
+                    if (m_Rigidbody == null)
+                    {
+                        //Debug.Log("Open \"m_EnableMoveWithRigidbod\",but None Rigidbody Component");
+                        Debug.LogError("Please Add Rigidbody Component:Open \"m_EnableMoveWithRigidbod\",but None Rigidbody Component");
+                    }
+                }
+            
+
         }
+
 
 
         // Update is called once per frame
         void Update()
         {
             OpenActivity();
-            if (m_EnableHeadDetect)
-            {
-                m_IsCollisionForHead = GetCollisionStatusForHead();   
-            }
-            
+
         }
 
         #endregion
 
 
-        #region Move
+        #region Movement
         protected  virtual void OpenActivity()
         {
             SyncModelPosition();
@@ -92,13 +86,10 @@ namespace Tangerine
             {
                 updateMove();
             }
-
             if (m_EnableRotate)
             {
                 updateRotate();
             }
-
-            Fall();
         }
         private void updateMove()
         {
@@ -108,7 +99,6 @@ namespace Tangerine
             bool isLeftMove = axisDirL.magnitude > m_MoveDeadZone;
             bool isRightMove = axisDirR.magnitude > m_MoveDeadZone;
             //Debug.Log("axisDirR.magnitude:"+axisDirR.magnitude);
-            //SetMoveStatus(isLeftMove, isRightMove);
 
             if (m_EnableMove && m_EnableRotate)
             {
@@ -162,23 +152,6 @@ namespace Tangerine
 
         }
 
-        // private bool SetMoveStatus(bool isLeftMove, bool isRightMove)
-        // {
-        //     if (isLeftMove || isRightMove)
-        //     {
-        //         m_isMove = true;
-        //     }
-        //     else
-        //     {
-        //         m_isMove = false;
-        //     }
-        //     return m_isMove;
-        // }
-        // public bool GetMoveStatus()
-        // {
-        //     return m_isMove;
-        // }
-
         private void moveByAxisDir(Vector2 axisDir)
         {
             float deltaDeg = Vector2.SignedAngle(Vector2.up, axisDir);
@@ -193,48 +166,37 @@ namespace Tangerine
             //Vector3 hDirection = Vector3.ProjectOnPlane(headDir3,Vector3.up);
             float MoveAngle = Vector3.SignedAngle(MoveDir, headDir3, Vector3.up);
             m_direct = GetDirect(MoveAngle);
+
             m_realSpeed = axisDir.magnitude * m_MoveSpeed;
-
+            bool isRigidbodyMove = false;
             //m_RootTrans.Translate(m_realSpeed * Time.deltaTime * MoveDir, Space.World);
-            m_characterController.Move(m_realSpeed * Time.deltaTime * MoveDir);
-            //m_isGrounded = m_characterController.isGrounded;
-        }
-        #endregion
-
-        #region Fall
-        private void GetFallStatus()
-        {
-            if (m_characterController.isGrounded)
+            if (!m_EnableMoveWithRigidbody)
             {
-                m_isFAll = false;
-                m_FallSpeed = 0;
-                return;
+                isRigidbodyMove = false;
+                if ( !isRigidbodyMove && m_Rigidbody != null)
+                {
+                    if (!m_Rigidbody.isKinematic)
+                    {
+                        m_Rigidbody.isKinematic = true;
+                    }
+                    isRigidbodyMove = true;
+                }
+
+                m_RootTrans.Translate(m_realSpeed * Time.deltaTime * MoveDir, Space.World);
             }
             else
             {
-                m_isFAll = true;
-                m_FallSpeed -= m_gravity * m_gravityRation;
+                isRigidbodyMove = true;
+                if (isRigidbodyMove&&m_Rigidbody.isKinematic)
+                {
+                    m_Rigidbody.isKinematic = false;
+                    isRigidbodyMove = false;
+                }
+                Vector3 playerHorizontalVelocity = m_Rigidbody.velocity;
+                playerHorizontalVelocity.y = 0f;
+                m_Rigidbody.AddForce((m_realSpeed * MoveDir) - playerHorizontalVelocity, ForceMode.VelocityChange);
             }
-            //m_characterController.Move(Vector3.up * m_FallSpeed * Time.deltaTime);
         }
-
-        private void Fall()
-        {
-            GetFallStatus();
-
-            if (!m_isFAll)
-            {
-                return;
-            }
-            else
-            {
-                m_characterController.Move(Vector3.up * m_FallSpeed * Time.deltaTime);
-            }
-
-        }
-        #endregion
-
-        #region Rotate
 
         private void updateRotate()
         {
@@ -303,7 +265,7 @@ namespace Tangerine
             }
             return 0;
         }
-        private void SyncModelPosition()
+         private void SyncModelPosition()
         {
             if (m_ModelRoot == null)
             {
@@ -318,45 +280,6 @@ namespace Tangerine
             }
 
         }
-        public void SetModelRoot(Transform modelRoot)
-        {
-            m_ModelRoot = modelRoot;
-        }
-        private bool GetCollisionStatusForHead()
-        {
-            if (headCheck == null)
-            {
-                return false;
-            }
-            Collider[] colliders = Physics.OverlapBox(headCheck.position, halfExtents);
-            foreach (Collider collider in colliders)
-            {
-                //忽略角色自身和所有子集碰撞体
-                Debug.Log("ignore collider for" + collider.gameObject.name);
-                if (collider.gameObject != this.gameObject && !IsChildOf(collider.transform, transform))
-                {
-                     //Debug.Log("GetCollisionStatusForHead:true");
-                    return true;
-                   
-                }
-            }
-             //Debug.Log("GetCollisionStatusForHead:false");
-            return false;
-            
-
-        }
-        bool IsChildOf(Transform child, Transform parent)
-        {
-            while (child != null)
-            {
-                if (child == parent)
-                {
-                    return true;
-                }
-                child = child.parent;
-            }
-            return false;
-            #endregion
-        }
+        #endregion
     }
 }

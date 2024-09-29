@@ -16,4 +16,13 @@ namespace Tangerine
         Right = 7,
         ForwardRight = 8,
     }
+    public enum MoveMethod
+    {
+        NoneMove = 0,
+        MoveByCommand = 1,
+        MoveByRigidbody = 2,
+        MoveByCharacterController = 3,
+
+        MoveByCustom=4,
+    }
 }

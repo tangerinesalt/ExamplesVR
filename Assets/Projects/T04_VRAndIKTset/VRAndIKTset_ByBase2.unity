@@ -5646,6 +5646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f507789974c7fab40823a6543f8aa7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_VRMovementScript: {fileID: 0}
   m_VRRoot: {fileID: 7413474853117797028}
   m_VRHead: {fileID: 7255934304979519530}
   m_VRLeftHand: {fileID: 8620092110547706252}
@@ -7415,6 +7416,10 @@ MonoBehaviour:
   m_InputAxis2DRight: {fileID: -8913632776464853991, guid: 4948aedcb6f811f419c2053a4629cbc6, type: 3}
   m_RootTrans: {fileID: 7413474853117797028}
   m_HeadTrans: {fileID: 7255934304979519530}
+  m_EnableHeadDetect: 0
+  headCheck: {fileID: 0}
+  halfExtents: {x: 0.4, y: 0.5, z: 0.4}
+  m_IsCollisionForHead: 0
   m_ModelRoot: {fileID: 0}
   m_VRSyncPoint: {fileID: 5390986449980725678}
 --- !u!1 &1041393355421381144
@@ -8114,6 +8119,7 @@ GameObject:
   - component: {fileID: 100438361039278698}
   - component: {fileID: 5003690933627942610}
   - component: {fileID: 871295484715176116}
+  - component: {fileID: 7413474853117797029}
   - component: {fileID: 6292455691076344572}
   - component: {fileID: 1378416070322964418}
   m_Layer: 0
@@ -9244,6 +9250,29 @@ Transform:
   - {fileID: 5808241107853252329}
   m_Father: {fileID: 3323290849695072662}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7413474853117797029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745970204551290558}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d8379aa9aba464e9d38f8c6b443406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EnableRotate: 0
+  m_RotateSpeed: 10
+  m_EnableMove: 1
+  m_MoveMethod: 1
+  m_MoveSpeed: 3
+  m_MoveDeadZone: 0.1
+  m_InputAxis2DLeft: {fileID: 0}
+  m_InputAxis2DRight: {fileID: 0}
+  m_RootTrans: {fileID: 0}
+  m_HeadTrans: {fileID: 0}
+  m_Rigidbody: {fileID: 0}
 --- !u!4 &7443125381076364393
 Transform:
   m_ObjectHideFlags: 0

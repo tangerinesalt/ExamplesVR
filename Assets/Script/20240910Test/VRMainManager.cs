@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class VRMainManager : SingleBehaviour<VRMainManager>
 {
+    [SerializeField] private VRMovementBase m_VRMovementScript = null;
     [SerializeField] private Transform m_VRRoot;
     [SerializeField] private Transform m_VRHead;
     [SerializeField] private Transform m_VRLeftHand;
@@ -12,7 +13,23 @@ public class VRMainManager : SingleBehaviour<VRMainManager>
     [SerializeField] private Transform m_VRLeftController;
     [SerializeField] private Transform m_VRRightController;
 
+    protected override void Awake()
+    {
+        base.Awake();
 
+        if (m_VRMovementScript == null)
+        {
+            try
+            {
+                m_VRMovementScript = m_VRRoot.GetComponent<VRMovementBase>();
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log($"couldn't find VRMovement(Component:VRMovementBase) from {m_VRRoot.gameObject.name}");
+                Debug.Log(e.Message);
+            }
+        }
+    }
 
     private void Start()
     {
@@ -47,6 +64,10 @@ public class VRMainManager : SingleBehaviour<VRMainManager>
     public Transform GetVRRightController()
     {
         return m_VRRightController;
+    }
+    public VRMovementBase GetVRMovementScript()
+    {
+        return m_VRMovementScript;
     }
 
     #endregion

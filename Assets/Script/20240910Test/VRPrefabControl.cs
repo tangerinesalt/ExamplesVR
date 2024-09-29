@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using Tangerine;
 
 /*
 	Documentation: https://mirror-networking.gitbook.io/docs/guides/networkbehaviour
@@ -25,7 +26,7 @@ public class VRPrefabControl : NetworkBehaviour
     [Header("Multiple peoples Setting")]
     [SerializeField] private List<GameObject> m_HidePrefabsObjects = new List<GameObject>();
     // [SerializeField] private Transform m_SyncToolPrefabRoot01 = null;
-
+    private VRMovementBase m_VRMovementScript = null;
 
 
     #region Unity Callbacks
@@ -39,6 +40,8 @@ public class VRPrefabControl : NetworkBehaviour
            camera.cullingMask = camera.cullingMask & ~(1 << LayerMask.NameToLayer("Player"));
             
         }
+        m_VRMovementScript=VRMainManager.Instance.GetVRMovementScript();
+        
     }
 
     private void Update()
@@ -50,6 +53,8 @@ public class VRPrefabControl : NetworkBehaviour
             m_SyncToolHead.SetPositionAndRotation(VRMainManager.Instance.GetVRHead().position, VRMainManager.Instance.GetVRHead().rotation);
             m_SyncToolLeftHand.SetPositionAndRotation(VRMainManager.Instance.GetVRLeftHand().position, VRMainManager.Instance.GetVRLeftHand().rotation);
             m_SyncToolRightHand.SetPositionAndRotation(VRMainManager.Instance.GetVRRightHand().position, VRMainManager.Instance.GetVRRightHand().rotation);
+            
+            
         }
 
     }

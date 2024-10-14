@@ -9,19 +9,23 @@ using Tangerine;
 
 namespace Tangerine
 {
+    /// <summary>
+    /// 可以选择三种移动方式,并提供自定义移动方式MoveMethod.custom;
+    /// 提供unity生命周期继承方式
+    /// </summary>
     public class VRMovementBase : MonoBehaviour
     {
         [Header("Rotate")]
-        [SerializeField] private bool m_EnableRotate = false;
-        [SerializeField] private float m_RotateSpeed = 10f;
+        [SerializeField] protected bool m_EnableRotate = false;
+        [SerializeField] protected float m_RotateSpeed = 10f;
 
         [Header("Move")]
-        [SerializeField] private bool m_EnableMove = true;
-        [SerializeField] private MoveMethod m_MoveMethod = MoveMethod.MoveByCommand;
-        private bool m_EnableMoveWithRigidbody = true;
-        [SerializeField] private float m_MoveSpeed = 3f;
-        [SerializeField] private float m_MoveDeadZone = 0.1f;
-        private bool m_isMove = false;
+        [SerializeField] protected bool m_EnableMove = true;
+        [SerializeField] protected MoveMethod m_MoveMethod = MoveMethod.MoveByCommand;
+        protected bool m_EnableMoveWithRigidbody = true;
+        [SerializeField] protected float m_MoveSpeed = 3f;
+        [SerializeField] protected float m_MoveDeadZone = 0.1f;
+        protected bool m_isMove = false;
 
         // [Header("Fall")]
         // [SerializeField] private float m_gravity = 9.8f;
@@ -30,11 +34,11 @@ namespace Tangerine
         // private float m_FallSpeed = 0f;
 
         [Header("Input")]
-        [SerializeField] private InputActionReference m_InputAxis2DLeft = null;
-        [SerializeField] private InputActionReference m_InputAxis2DRight = null;
-        [SerializeField] private Transform m_RootTrans = null;
-        [SerializeField] private Transform m_HeadTrans = null;
-        [SerializeField] private Rigidbody m_Rigidbody = null;
+        [SerializeField] protected InputActionReference m_InputAxis2DLeft = null;
+        [SerializeField] protected InputActionReference m_InputAxis2DRight = null;
+        [SerializeField] protected Transform m_RootTrans = null;
+        [SerializeField] protected Transform m_HeadTrans = null;
+        [SerializeField] protected Rigidbody m_Rigidbody = null;
 
         // [Header("ModelControl")]
         // [SerializeField] private Transform m_ModelRoot = null;
@@ -44,10 +48,9 @@ namespace Tangerine
 
         private float m_realSpeed = 0;
         #region  Unity Cycle
-        void Start()
+        protected virtual void Start()
         {
             if (m_RootTrans == null) m_RootTrans = this.transform;
-
 
             try
             {
@@ -62,23 +65,15 @@ namespace Tangerine
                     Debug.Log($"Please Add Rigidbody Component for {this.name}");
                 }
             }
-
-
         }
-
-
 
         // Update is called once per frame
-        void Update()
+        protected virtual void Update()
         {
             OpenActivity();
-
         }
 
-
-
         #endregion
-
 
         #region Movement
         protected virtual void OpenActivity()
@@ -157,7 +152,7 @@ namespace Tangerine
 
         }
 
-        private void moveByAxisDir(Vector2 axisDir)
+        protected void moveByAxisDir(Vector2 axisDir)
         {
             float deltaDeg = Vector2.SignedAngle(Vector2.up, axisDir);
 
@@ -173,10 +168,10 @@ namespace Tangerine
             m_direct = GetDirect(MoveAngle);
             m_realSpeed = axisDir.magnitude * m_MoveSpeed;
 
-            //ChooseMoveMethod(m_MoveMethod, MoveDir);
-            DefaultMoveMethod(MoveDir);
+            ChooseMoveMethod(m_MoveMethod, MoveDir);
+            //DefaultMoveMethod(MoveDir);
         }
-        public  virtual void ChooseMoveMethod(MoveMethod _moveMethod, Vector3 MoveDir)
+        public virtual void ChooseMoveMethod(MoveMethod _moveMethod, Vector3 MoveDir)
         {
             if (_moveMethod == MoveMethod.MoveByCommand)
             {
@@ -188,13 +183,13 @@ namespace Tangerine
             }
             else if (_moveMethod == MoveMethod.MoveByCharacterController)
             {
-                MoveByCharacterControllerd();
+                MoveByCharacterControllerd(MoveDir);
             }
             else if (_moveMethod == MoveMethod.NoneMove)
             {
                 m_EnableMove = false;
             }
-            
+
 
         }
         private void DefaultMoveMethod(Vector3 MoveDir)
@@ -240,6 +235,8 @@ namespace Tangerine
         }
         public virtual void MoveByRigidbody(Vector3 MoveDir)
         {
+            m_EnableMove = true;
+            m_EnableMoveWithRigidbody = true;
             if (m_Rigidbody == null)
             {
                 Debug.LogError($"Please Add Rigidbody Component for{this.name}");
@@ -254,30 +251,50 @@ namespace Tangerine
             playerHorizontalVelocity.y = 0f;
             m_Rigidbody.AddForce((m_realSpeed * MoveDir) - playerHorizontalVelocity, ForceMode.VelocityChange);
         }
-        public virtual void MoveByCharacterControllerd()
+        public virtual void MoveByCharacterControllerd(Vector3 MoveDir)
         {
             Debug.Log("Executed: MoveByCharacterController()");
             bool errorExamples = false;
-            if(errorExamples)
+            if (errorExamples)
             {
                 Debug.LogError($"have a characterControllerd(VRMovement:VRMovementBase) Error for{this.name}");
                 m_MoveMethod = MoveMethod.MoveByCommand;
                 return;
             }
-            
+            if (!errorExamples)
+            {
+                CharacterController characterController = this.GetComponent<CharacterController>();
+                if (characterController == null)
+                {
+                    Debug.LogError($"Please Add CharacterController Component for{this.name}");
+                    m_MoveMethod = MoveMethod.MoveByCommand;
+                    return;
+                }
+                else
+                {
+                    m_EnableMove = true;
+                    m_EnableMoveWithRigidbody = false;
+                    if (m_Rigidbody != null && !m_Rigidbody.isKinematic)
+                    {
+                        m_Rigidbody.isKinematic = true;
+                    }
+                    characterController.Move(m_realSpeed * Time.deltaTime * MoveDir);
+                }
+            }
+
         }
 
         #endregion
 
         #region Rotate
 
-        private void updateRotate()
+        protected void updateRotate()
         {
             Vector2 axisDirR = m_InputAxis2DRight.action.ReadValue<Vector2>();
             //Debug.Log ("axisDirR.X:"+axisDirR.x);
             rotateByAxisDir(axisDirR.x * m_RotateSpeed * Time.deltaTime);
         }
-        private void rotateByAxisDir(float axisDir_Horizontal)
+        protected void rotateByAxisDir(float axisDir_Horizontal)
         {
             Vector3 oldRootPos = m_RootTrans.position;
             Vector3 oldHeadPos = m_HeadTrans.position;
@@ -295,6 +312,13 @@ namespace Tangerine
             transform.Rotate(0, axisDir_Horizontal, 0);
 
         }
+        #endregion
+        #region Teleportation
+        public void Teleportation(Vector3 _position)
+        {
+            m_RootTrans.position = _position;
+        }
+        
         #endregion
 
         #region Other

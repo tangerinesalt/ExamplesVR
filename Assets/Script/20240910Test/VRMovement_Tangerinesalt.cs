@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Tangerine;
@@ -5,22 +6,40 @@ using UnityEngine;
 
 public class VRMovement_Tangerinesalt : VRMovementBase
 {
-    private void Start()
-    {
-        //m_moveMethod = MoveMethod.MoveByCustom;
+    [Header("Sync")]
+    [SerializeField] private Transform m_SyncTransformForModel = null;
+    private bool isOpenSync = false;
 
+    protected override void Start()
+    {
+        base.Start();
+        if (m_SyncTransformForModel != null)
+        {
+            isOpenSync = true;
+        }
     }
+    protected override void Update()
+    {
+        base.Update();
+        SyncPosition();
+    }
+
+    private void SyncPosition()
+    {
+        if (!isOpenSync)
+        {
+            Debug.Log("The object being synchronized is empty");
+        }
+        else
+        {
+            m_SyncTransformForModel.position = m_RootTrans.position;
+        }
+    }
+
     public override void ChooseMoveMethod(MoveMethod _moveMethod, Vector3 MoveDir)
     {
         base.ChooseMoveMethod(_moveMethod, MoveDir);
-        if (_moveMethod == MoveMethod.MoveByCustom)
-        {
-            Debug.Log($"Executed: MoveByCustom() for {this.name}");
-            //MoveByCustom(MoveDir);
-        }
     }
-    
-
     public override void MoveByCommand(Vector3 MoveDir)
     {
         base.MoveByCommand(MoveDir);
@@ -30,10 +49,9 @@ public class VRMovement_Tangerinesalt : VRMovementBase
     {
         base.MoveByRigidbody(MoveDir);
     }
-
-    public override void MoveByCharacterControllerd()
+    public override void MoveByCharacterControllerd(Vector3 MoveDir)
     {
-        base.MoveByCharacterControllerd();
+        base.MoveByCharacterControllerd(MoveDir);
     }
 
 }

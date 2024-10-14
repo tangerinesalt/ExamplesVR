@@ -168,8 +168,11 @@ public class RigidbodyColliderDrive : MonoBehaviour
         if (auxPositioner == null)
         {
             auxPositioner = GetComponentsInChildren<VR_AuxiliaryPositioner>()[0];
-            Debug.LogError($"RigidbodyColliderDrive({this.name}) No VR_AuxiliaryPositioner Component");
-            m_IsHeadPiercing = false;
+            if (auxPositioner == null)
+            {
+                Debug.LogError($"RigidbodyColliderDrive({this.name}) No VR_AuxiliaryPositioner Component");
+                m_IsHeadPiercing = false;
+            }
             return Vector3.zero;
         }
         else

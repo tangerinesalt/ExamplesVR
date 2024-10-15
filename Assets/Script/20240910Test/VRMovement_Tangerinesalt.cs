@@ -7,7 +7,7 @@ using UnityEngine;
 public class VRMovement_Tangerinesalt : VRMovementBase
 {
     [Header("Sync")]
-    [SerializeField] private Transform m_SyncTransformForModel = null;
+    [SerializeField] private Transform m_SyncTransformForModel = null;//需要优化,使用单例获取
     private bool isOpenSync = false;
 
     protected override void Start()
@@ -21,7 +21,7 @@ public class VRMovement_Tangerinesalt : VRMovementBase
     protected override void Update()
     {
         base.Update();
-        SyncPosition();
+        SyncPosition();//VR组件与模型的位置同步
     }
 
     private void SyncPosition()

@@ -81,6 +81,7 @@ public class RigidbodyColliderDrive : MonoBehaviour
 
     }
 
+    // 获取VR、碰撞体组件
     protected void Start()
     {
 
@@ -112,6 +113,7 @@ public class RigidbodyColliderDrive : MonoBehaviour
         UpdateRigidBodyCollider();
     }
 
+    //复位延时判断
     private IEnumerator RecognizeHeadPiercing()
     {
         yield return new WaitForSeconds(1f);
@@ -120,38 +122,43 @@ public class RigidbodyColliderDrive : MonoBehaviour
     }
     void Update()
     {
-        UpdateRigidBodyCollider();
+        UpdateRigidBodyCollider();//更新碰撞体高度
+        Reset();//复位功能
     }
     void OnDisable()
     {
         StopCoroutine(RecognizeHeadPiercing());
     }
 
+    //更新碰撞体高度
     protected virtual void UpdateRigidBodyCollider()
     {
 
         if (!(m_XROrigin == null) && !(m_capsuleCollider == null))
         {
-            //更新碰撞体高度
+            //更新计算
             float num = Mathf.Clamp(m_XROrigin.CameraInOriginSpaceHeight, m_MinHeight, m_MaxHeight);
             Vector3 cameraInOriginSpacePos = m_XROrigin.CameraInOriginSpacePos;
             cameraInOriginSpacePos.y = num / 2f + 0.01f;
             m_capsuleCollider.height = num;
             m_capsuleCollider.center = cameraInOriginSpacePos;
-            //Debug.Log("UpdateRigidBodyCollider");
 
-            //float cameraHeight = m_XROrigin.CameraInOriginSpaceHeight;
-            //Debug.Log("cameraHeight:"+cameraHeight.ToString()+",Calculated Height:"+num.ToString()+",The difference is:"+(cameraHeight-num).ToString());
-            //Debug.Log ("The difference is:"+(cameraHeight-num).ToString());
+        }
+    }
 
-            //复位功能
-            float cameraHeightInVirtualSpace = m_XROrigin.Camera.transform.position.y;
+    //复位功能
+    protected virtual void Reset()
+    {
+         if (!(m_XROrigin == null) && !(m_capsuleCollider == null))
+         {
+             float cameraHeightInVirtualSpace = m_XROrigin.Camera.transform.position.y;
             float cameraHeightInOriginSpace = m_XROrigin.CameraInOriginSpaceHeight;
             //Debug.Log("The Height displacement:"+math.abs(cameraHeightInOriginSpace-cameraHeightInVirtualSpace).ToString("F1"));
             if (RecognizingHeadPiercings && math.abs(cameraHeightInOriginSpace - cameraHeightInVirtualSpace) > 0.1f)
             {
                 m_IsHeadPiercing = true;
-                Vector3 teleportionLocation = GetTeleportationLocation();
+                Vector3 teleportionLocation = Vector3.zero;
+                teleportionLocation = GetTeleportationLocation();
                 if (m_IsHeadPiercing)
                 {
                     Teleportation(teleportionLocation);
@@ -161,30 +168,36 @@ public class RigidbodyColliderDrive : MonoBehaviour
             {
                 m_IsHeadPiercing = false;
             }
-        }
+         }
     }
+    //获取复位位置
     public Vector3 GetTeleportationLocation()
     {
         if (auxPositioner == null)
         {
+            //组件获取,需要移植到start
             auxPositioner = GetComponentsInChildren<VR_AuxiliaryPositioner>()[0];
             if (auxPositioner == null)
             {
                 Debug.LogError($"RigidbodyColliderDrive({this.name}) No VR_AuxiliaryPositioner Component");
-                m_IsHeadPiercing = false;
             }
+            m_IsHeadPiercing = false;
             return Vector3.zero;
         }
         else
         {
-            return auxPositioner.GetTeleportationLocation();
+            Vector3 teleportationLocation = auxPositioner.GetTeleportationLocation();
+            return teleportationLocation;
         }
 
     }
+
+    //复位操作
     private void Teleportation(Vector3 _position)
     {
         if (vrMovement == null)
         {
+             //组件获取,需要移植到start
             vrMovement = GetComponent<VRMovementBase>();
 
             if (vrMovement == null)

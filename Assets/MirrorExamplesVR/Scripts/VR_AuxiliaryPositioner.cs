@@ -18,6 +18,7 @@ public class VR_AuxiliaryPositioner : MonoBehaviour
         {
             _TeleportationLocation=this.transform.position;
             _TeleportationLocation.y=0;
+            //Debug.Log("Teleportation Location: "+_TeleportationLocation.x+","+_TeleportationLocation.y+","+_TeleportationLocation.z);
             //Debug.Log($"{other.gameObject.name} entered VR_AuxiliaryPositioner");
         }
     }

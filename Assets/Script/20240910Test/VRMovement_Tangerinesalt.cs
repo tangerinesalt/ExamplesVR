@@ -36,23 +36,6 @@ public class VRMovement_Tangerinesalt : VRMovementBase
         }
     }
 
-    public override void ChooseMoveMethod(MoveMethod _moveMethod, Vector3 MoveDir)
-    {
-        base.ChooseMoveMethod(_moveMethod, MoveDir);
-    }
-    public override void MoveByCommand(Vector3 MoveDir)
-    {
-        base.MoveByCommand(MoveDir);
-    }
-
-    public override void MoveByRigidbody(Vector3 MoveDir)
-    {
-        base.MoveByRigidbody(MoveDir);
-    }
-    public override void MoveByCharacterControllerd(Vector3 MoveDir)
-    {
-        base.MoveByCharacterControllerd(MoveDir);
-    }
 
 }
 

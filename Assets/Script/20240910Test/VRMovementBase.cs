@@ -6,6 +6,7 @@ using Mirror;
 using System;
 using Unity.Mathematics;
 using Tangerine;
+using RootMotion.Demos;
 
 namespace Tangerine
 {
@@ -21,7 +22,9 @@ namespace Tangerine
 
         [Header("Move")]
         [SerializeField] protected bool m_EnableMove = true;
-        [SerializeField] protected MoveMethod m_MoveMethod = MoveMethod.MoveByCommand;
+        [SerializeField] public MoveMethod m_MoveMethod = MoveMethod.MoveByCommand;
+        private MoveMethod _currentMoveMethod = default;
+
         protected bool m_EnableMoveWithRigidbody = true;
         [SerializeField] protected float m_MoveSpeed = 3f;
         [SerializeField] protected float m_MoveDeadZone = 0.1f;
@@ -51,20 +54,6 @@ namespace Tangerine
         protected virtual void Start()
         {
             if (m_RootTrans == null) m_RootTrans = this.transform;
-
-            try
-            {
-                m_Rigidbody = this.GetComponent<Rigidbody>();
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e.Message);
-                if (m_Rigidbody == null)
-                {
-                    //Debug.LogError("$"Please Add Rigidbody Component for {this.name}"");
-                    Debug.Log($"Please Add Rigidbody Component for {this.name}");
-                }
-            }
         }
 
         // Update is called once per frame
@@ -72,7 +61,11 @@ namespace Tangerine
         {
             OpenActivity();
         }
-
+        
+        public void ChangeMoveStatus(bool isMove)
+        {
+            m_EnableMove= isMove;
+        }
         #endregion
 
         #region Movement
@@ -151,9 +144,13 @@ namespace Tangerine
             }
 
         }
+         #endregion
 
+        #region  Choose MoveMethod
         protected void moveByAxisDir(Vector2 axisDir)
         {
+            // Debug.Log("Executed: moveByAxisDir()");
+            // Debug.Log("MoveMethod:" + m_MoveMethod);
             float deltaDeg = Vector2.SignedAngle(Vector2.up, axisDir);
 
             Vector3 headDir3 = m_HeadTrans.forward;
@@ -225,28 +222,42 @@ namespace Tangerine
         }
         public virtual void MoveByCommand(Vector3 MoveDir)
         {
+            // Debug.Log("Executed: MoveByCommand()");
             m_EnableMove = true;
             m_EnableMoveWithRigidbody = false;
-            if (m_Rigidbody != null && !m_Rigidbody.isKinematic)
-            {
-                m_Rigidbody.isKinematic = true;
-            }
+            // if (PureMoveApproach)
+            // {
+            //     if (m_Rigidbody != null && !m_Rigidbody.isKinematic)
+            //     {
+            //         m_Rigidbody.isKinematic = true;//运动学，去除重力影响
+            //     }
+            // }
             m_RootTrans.Translate(m_realSpeed * Time.deltaTime * MoveDir, Space.World);
         }
         public virtual void MoveByRigidbody(Vector3 MoveDir)
         {
+            //Debug.Log("Executed: MoveByRigidbody()");
             m_EnableMove = true;
             m_EnableMoveWithRigidbody = true;
             if (m_Rigidbody == null)
             {
-                Debug.LogError($"Please Add Rigidbody Component for{this.name}");
-                m_MoveMethod = MoveMethod.MoveByCommand;
-                return;
+                m_Rigidbody = this.GetComponent<Rigidbody>();
+                if (m_Rigidbody == null)
+                {
+                    m_MoveMethod = MoveMethod.MoveByCommand;
+                    Debug.Log("change MoveMethod to MoveByCommand");
+                    return;
+                }
             }
+
             if (m_Rigidbody.isKinematic)
             {
-                m_Rigidbody.isKinematic = false;
+                //m_Rigidbody.isKinematic = false;
+                m_MoveMethod = MoveMethod.MoveByCommand;
+                Debug.Log("change MoveMethod to MoveByCommand");
+                return;
             }
+
             Vector3 playerHorizontalVelocity = m_Rigidbody.velocity;
             playerHorizontalVelocity.y = 0f;
             m_Rigidbody.AddForce((m_realSpeed * MoveDir) - playerHorizontalVelocity, ForceMode.VelocityChange);
@@ -255,29 +266,33 @@ namespace Tangerine
         {
             Debug.Log("Executed: MoveByCharacterController()");
             bool errorExamples = false;
-            if (errorExamples)
+            if (!errorExamples)
             {
                 Debug.LogError($"have a characterControllerd(VRMovement:VRMovementBase) Error for{this.name}");
                 m_MoveMethod = MoveMethod.MoveByCommand;
+                Debug.Log("change MoveMethod to MoveByCommand");
                 return;
             }
-            if (!errorExamples)
+            if (errorExamples)
             {
                 CharacterController characterController = this.GetComponent<CharacterController>();
                 if (characterController == null)
                 {
                     Debug.LogError($"Please Add CharacterController Component for{this.name}");
                     m_MoveMethod = MoveMethod.MoveByCommand;
+                    Debug.Log("change MoveMethod to MoveByCommand");
                     return;
                 }
                 else
                 {
                     m_EnableMove = true;
                     m_EnableMoveWithRigidbody = false;
-                    if (m_Rigidbody != null && !m_Rigidbody.isKinematic)
-                    {
-                        m_Rigidbody.isKinematic = true;
-                    }
+                    
+                        if (m_Rigidbody != null && !m_Rigidbody.isKinematic)
+                        {
+                            m_Rigidbody.isKinematic = true;
+                        }
+                    
                     characterController.Move(m_realSpeed * Time.deltaTime * MoveDir);
                 }
             }
@@ -318,7 +333,7 @@ namespace Tangerine
         {
             m_RootTrans.position = _position;
         }
-        
+
         #endregion
 
         #region Other
@@ -362,22 +377,13 @@ namespace Tangerine
             }
             return 0;
         }
-        // public void SyncModelPosition(Transform _modelRootPos)
-        // {
-        //     if (_modelRootPos == null)
-        //     {
-        //         return;
-        //     }
-        //     else if (_modelRootPos != null || m_VRSyncPointForVRBottom != null)
-        //     {
-
-        //         Vector3 Modelpos = _modelRootPos.position;
-        //         //m_ModelRoot.position = new Vector3(Modelpos.x, m_VRSyncPoint.position.y-GroundDifference, Modelpos.z);
-        //         _modelRootPos.position = new Vector3(Modelpos.x, m_VRSyncPointForVRBottom.position.y, Modelpos.z);
-        //     }
-        // }
-
-
+        
+        public void ChangeMoveMethod(MoveMethod _moveMethod)
+        {
+            m_MoveMethod = _moveMethod;
+            _currentMoveMethod = _moveMethod;
+            //Debug.Log($"change MoveMethod to {m_MoveMethod}");
+        }
         #endregion
     }
 }

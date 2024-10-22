@@ -23,6 +23,7 @@ namespace Tangerine
         MoveByRigidbody = 2,
         MoveByCharacterController = 3,
 
-        MoveByCustom=4,
+        MoveByCustom=4
     }
+    
 }

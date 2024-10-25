@@ -22,19 +22,13 @@ namespace Tangerine
 
         [Header("Move")]
         [SerializeField] protected bool m_EnableMove = true;
-        [SerializeField] public MoveMethod m_MoveMethod = MoveMethod.MoveByCommand;
-        private MoveMethod _currentMoveMethod = default;
+        [SerializeField] protected MoveMethod m_MoveMethod = MoveMethod.MoveByCommand;
 
         protected bool m_EnableMoveWithRigidbody = true;
         [SerializeField] protected float m_MoveSpeed = 3f;
         [SerializeField] protected float m_MoveDeadZone = 0.1f;
         protected bool m_isMove = false;
 
-        // [Header("Fall")]
-        // [SerializeField] private float m_gravity = 9.8f;
-        // private bool m_isFAll = false;
-        // private float m_gravityRation = 0.01f;
-        // private float m_FallSpeed = 0f;
 
         [Header("Input")]
         [SerializeField] protected InputActionReference m_InputAxis2DLeft = null;
@@ -43,9 +37,6 @@ namespace Tangerine
         [SerializeField] protected Transform m_HeadTrans = null;
         [SerializeField] protected Rigidbody m_Rigidbody = null;
 
-        // [Header("ModelControl")]
-        // [SerializeField] private Transform m_ModelRoot = null;
-        // [SerializeField] private Transform m_VRSyncPointForVRBottom = null;
 
         private MoveDirect m_direct = MoveDirect.None;
 
@@ -56,7 +47,7 @@ namespace Tangerine
             if (m_RootTrans == null) m_RootTrans = this.transform;
         }
 
-        // Update is called once per frame
+        
         protected virtual void Update()
         {
             OpenActivity();
@@ -71,7 +62,6 @@ namespace Tangerine
         #region Movement
         protected virtual void OpenActivity()
         {
-            //SyncModelPosition();
             if (m_EnableMove)
             {
                 updateMove();
@@ -149,8 +139,6 @@ namespace Tangerine
         #region  Choose MoveMethod
         protected void moveByAxisDir(Vector2 axisDir)
         {
-            // Debug.Log("Executed: moveByAxisDir()");
-            // Debug.Log("MoveMethod:" + m_MoveMethod);
             float deltaDeg = Vector2.SignedAngle(Vector2.up, axisDir);
 
             Vector3 headDir3 = m_HeadTrans.forward;
@@ -222,26 +210,18 @@ namespace Tangerine
         }
         public virtual void MoveByCommand(Vector3 MoveDir)
         {
-            // Debug.Log("Executed: MoveByCommand()");
             m_EnableMove = true;
             m_EnableMoveWithRigidbody = false;
-            // if (PureMoveApproach)
-            // {
-            //     if (m_Rigidbody != null && !m_Rigidbody.isKinematic)
-            //     {
-            //         m_Rigidbody.isKinematic = true;//运动学，去除重力影响
-            //     }
-            // }
+            
             m_RootTrans.Translate(m_realSpeed * Time.deltaTime * MoveDir, Space.World);
         }
         public virtual void MoveByRigidbody(Vector3 MoveDir)
         {
-            //Debug.Log("Executed: MoveByRigidbody()");
             m_EnableMove = true;
             m_EnableMoveWithRigidbody = true;
             if (m_Rigidbody == null)
             {
-                m_Rigidbody = this.GetComponent<Rigidbody>();
+                GetRigidbodyComponent();
                 if (m_Rigidbody == null)
                 {
                     m_MoveMethod = MoveMethod.MoveByCommand;
@@ -249,8 +229,7 @@ namespace Tangerine
                     return;
                 }
             }
-
-            if (m_Rigidbody.isKinematic)
+            if(m_Rigidbody != null && m_Rigidbody.isKinematic)
             {
                 //m_Rigidbody.isKinematic = false;
                 m_MoveMethod = MoveMethod.MoveByCommand;
@@ -264,7 +243,6 @@ namespace Tangerine
         }
         public virtual void MoveByCharacterControllerd(Vector3 MoveDir)
         {
-            Debug.Log("Executed: MoveByCharacterController()");
             bool errorExamples = false;
             if (!errorExamples)
             {
@@ -325,7 +303,6 @@ namespace Tangerine
 
             m_RootTrans.Rotate(Vector3.up, axisDir_Horizontal);
             transform.Rotate(0, axisDir_Horizontal, 0);
-
         }
         #endregion
         #region Teleportation
@@ -377,12 +354,54 @@ namespace Tangerine
             }
             return 0;
         }
+        private void GetRigidbodyComponent()
+        {
+            if (m_Rigidbody == null)
+            {
+                m_Rigidbody = this.GetComponent<Rigidbody>();
+                if (m_Rigidbody == null)
+                {
+                    Debug.LogError("Please Add Rigidbody Component for" + this.name);
+                }
+            }
+        }
         
         public void ChangeMoveMethod(MoveMethod _moveMethod)
         {
-            m_MoveMethod = _moveMethod;
-            _currentMoveMethod = _moveMethod;
-            //Debug.Log($"change MoveMethod to {m_MoveMethod}");
+            if (m_MoveMethod != _moveMethod)
+            {
+                m_MoveMethod = _moveMethod;
+
+                switch (m_MoveMethod)
+                {
+                    case MoveMethod.MoveByCommand:
+                        Debug.Log("change MoveMethod to MoveByCommand");
+                        break;
+                    case MoveMethod.MoveByRigidbody:
+                        if (m_Rigidbody == null)
+                            GetRigidbodyComponent();
+                        if (m_Rigidbody != null)
+                        {
+                            if (m_Rigidbody.isKinematic)
+                                Debug.LogError($"({this.name})Rigidbody isKinematic is true,but it should be false");
+                            else 
+                                Debug.Log("change MoveMethod to MoveByRigidbody");
+                        }
+                        break;
+                    case MoveMethod.MoveByCharacterController:
+                        Debug.Log("change MoveMethod to MoveByCharacterController");
+                        break;
+                    case MoveMethod.NoneMove:
+                        Debug.Log("change MoveMethod to NoneMove");
+                        break;
+                    case MoveMethod.MoveByCustom:
+                        Debug.Log("change MoveMethod to custom");
+                        break;
+                    default:
+                        Debug.Log("change MoveMethod to default");
+                        break;
+                }
+            }
         }
         #endregion
     }

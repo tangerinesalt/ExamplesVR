@@ -17,6 +17,19 @@ namespace Tangerine
 {
     public class RigidbodyColliderDrive : MonoBehaviour
     {
+        //复位功能
+        [Header("Reset function")]
+        [SerializeField] private bool m_EnableReset = false;
+
+        [SerializeField] private Rigidbody m_Rigidbody;
+        [SerializeField] private LayerMask m_GroundLevel;
+        private bool RecognizingHeadPiercings = false;
+        private bool m_IsHeadPiercing = false;
+        public event Action onReset;
+        private VR_AuxiliaryPositioner m_auxPositioner = null;
+        private VRMovementBase vrMovement = null;
+        private RaycastHit _raycastHit;
+        private bool m_UpdateLimiter=true;
         [Header("Collider Settings")]
         [SerializeField] private CapsuleCollider m_capsuleCollider;
         [SerializeField] private XROrigin m_XROrigin;
@@ -28,20 +41,7 @@ namespace Tangerine
         [SerializeField]
         [Tooltip("The maximum height of the CapsuleCollider that will be set by this behavior.")]
         private float m_MaxHeight = float.PositiveInfinity;
-        //复位功能
-        [Header("Reset function")]
-        [SerializeField] private bool m_EnableReset = false;
-        [SerializeField] private Mask m_ResetMask = default;
-
-        [SerializeField] private Rigidbody m_Rigidbody;
-        private bool RecognizingHeadPiercings = false;
-        private bool m_IsHeadPiercing = false;
         
-        public event Action onReset;
-        private VR_AuxiliaryPositioner m_auxPositioner = null;
-        private VRMovementBase vrMovement = null;
-        private RaycastHit _raycastHit;
-        private bool m_UpdateLimiter=true;
 
         #region unity Cycle
         // 获取VR、碰撞体组件
@@ -173,7 +173,7 @@ namespace Tangerine
                 {
                     GetRigidbodyComponent();
                 }
-                UpdateRigidbodyKinematic(false);
+                ChangeRigidbodyKinematic(false);
                 ChangeMoveMethod(MoveMethod.MoveByRigidbody);
                 m_UpdateLimiter = false;
             }
@@ -183,12 +183,12 @@ namespace Tangerine
                 {
                     GetRigidbodyComponent();
                 }
-                UpdateRigidbodyKinematic(true);
+                ChangeRigidbodyKinematic(true);
                 ChangeMoveMethod(MoveMethod.MoveByCommand);
                 m_UpdateLimiter = true;
             }
         }
-        private void UpdateRigidbodyKinematic(bool RigidbodyKinematicStatus)
+        private void ChangeRigidbodyKinematic(bool RigidbodyKinematicStatus)
         {
             m_Rigidbody.isKinematic = RigidbodyKinematicStatus;
         }
@@ -200,11 +200,12 @@ namespace Tangerine
             //Vector3 cameraInOriginSpacePos = m_XROrigin.CameraInOriginSpacePos;
             Vector3 headPos = m_XROrigin.Camera.transform.position;
             Ray ray = new Ray(headPos, Vector3.down);
-            Physics.Raycast(ray, out _raycastHit, 6f, LayerMask.GetMask("Environment"));
+            Physics.Raycast(ray, out _raycastHit, 6f, m_GroundLevel);
 
             Debug.DrawLine(headPos, _raycastHit.point, Color.red);
 
             float distance = math.distance(headPos, _raycastHit.point);
+            // bool isEqual=_raycastHit.distance.Equals(distance);
             return distance;
 
 
@@ -212,14 +213,23 @@ namespace Tangerine
         #endregion
 
         #region Attribute Settings
+        //加载场景后复位功能仍记录上一场景的传送点:1调用重置功能时更新传送点，2通过场景改变事件，更新传送点
         public bool EnableReset
         {
             get => m_EnableReset;
-            set => m_EnableReset = value;
+            set
+            {
+                m_EnableReset = value;
+                if (value == true)
+                {
+                    m_auxPositioner.SetTeleportationPointInPlace();
+                }
+            }
         }
 
         protected CapsuleCollider capsuleCollider => m_capsuleCollider;
         protected XROrigin xrOrigin => m_XROrigin;
+        
         public float minHeight
         {
             get => m_MinHeight;

@@ -13,15 +13,26 @@ public class VRMovement_Tangerinesalt : VRMovementBase
     protected override void Start()
     {
         base.Start();
-        if (m_SyncTransformForModel != null)
-        {
-            isOpenSync = true;
-        }
+       if (m_SyncTransformForModel == null)
+        {FindSyncObject();}
     }
     protected override void Update()
     {
         base.Update();
+        if (m_SyncTransformForModel == null)
+        {FindSyncObject();}
         SyncPosition();//VR组件与模型的位置同步
+    }
+    private void FindSyncObject()
+    {
+        if (m_SyncTransformForModel == null)
+        {
+            m_SyncTransformForModel= GameObject.Find("Y Bot_model").transform;
+            if(m_SyncTransformForModel!= null)
+           { isOpenSync = false;
+            Debug.Log("nont find syncObject");}
+        }
+         if(m_SyncTransformForModel != null) isOpenSync =true;
     }
 
     private void SyncPosition()

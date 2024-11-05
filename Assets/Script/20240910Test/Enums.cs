@@ -25,5 +25,13 @@ namespace Tangerine
 
         MoveByCustom=4
     }
+     public enum EHandType
+    {
+        Left,
+        Right,
+        Both,
+        Any,
+        None,
+    }
     
 }

@@ -16,19 +16,6 @@ public class VRMainManager : SingleBehaviour<VRMainManager>
     protected override void Awake()
     {
         base.Awake();
-
-        if (m_VRMovementScript == null)
-        {
-            try
-            {
-                m_VRMovementScript = m_VRRoot.GetComponent<VRMovementBase>();
-            }
-            catch (System.Exception e)
-            {
-                Debug.Log($"couldn't find VRMovement(Component:VRMovementBase) from {m_VRRoot.gameObject.name}");
-                Debug.Log(e.Message);
-            }
-        }
     }
 
     private void Start()

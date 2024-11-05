@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3b9d9689fae93418e33472f9eccaa7, type: 3}
+  m_Name: BhapticsSettings
+  m_EditorClassIdentifier: 
+  appName: SimulationTesting
+  appId: 6721d50b638059607b93b207
+  apiKey: mFZU0b0mvQwcETwMpSnD
+  lastDeployVersion: 4
+  eventData:
+  - durationMillis: 40
+    key: touch_catchable_right
+    description: 
+    isAudio: 1
+    updateTime: 1730272007807
+    positions: []
+  - durationMillis: 480
+    key: game_start
+    description: An indicator for when a game has started.
+    isAudio: 0
+    updateTime: 1677754433624
+    positions:
+    - Vest
+  - durationMillis: 40
+    key: correct_left
+    description: 
+    isAudio: 1
+    updateTime: 1730271595822
+    positions: []
+  - durationMillis: 40
+    key: wrong_left
+    description: 
+    isAudio: 1
+    updateTime: 1730271805694
+    positions: []
+  - durationMillis: 40
+    key: wrong_right
+    description: 
+    isAudio: 1
+    updateTime: 1730271819832
+    positions: []
+  - durationMillis: 40
+    key: wrong_both
+    description: 
+    isAudio: 1
+    updateTime: 1730271834495
+    positions: []
+  - durationMillis: 40
+    key: correct_both
+    description: 
+    isAudio: 1
+    updateTime: 1730271572310
+    positions: []
+  - durationMillis: 40
+    key: correct_right
+    description: 
+    isAudio: 1
+    updateTime: 1730271617774
+    positions: []
+  - durationMillis: 40
+    key: touch_catchable_left
+    description: 
+    isAudio: 1
+    updateTime: 1730272039015
+    positions: []
+  defaultDeploy: '{"status":true,"message":{"id":"BU20cljU3qN0dYLU6M30","createTime":1730272022940,"name":"SimulationTesting","creator":"XDTEpUQOgPO1vK4BW1RfdRhfgQp2","workspaceId":"6721d50b638059607b93b207","version":4,"disableValidation":false,"hapticMappings":[{"enable":true,"intensity":100,"key":"touch_catchable_right","category":"Default","description":"","updateTime":1730272007807,"tactFilePatterns":[],"audioFilePatterns":[{"patternId":"66a34f8961b92068575cd713","snapshotId":"6720a143e76eb102dd694bfb","position":"Vest","clip":{"id":"","name":"Button
+    Click (Right)","version":2,"duration":4,"patterns":{"GloveR":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAABgAAAAAAAAAAABg=","AGQAAAAAAAAABgAAAAAAAAAAABg=","AGQAAAAAAAAABgAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAAAgAAAAAAAAAAABg=","AGQAAAAAAAAAAgAAAAAAAAAAABg=","AGQAAAAAAAAAAgAAAAAAAAAAABg="],"GloveL":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg="]}}}],"eventTime":40},{"enable":true,"intensity":100,"key":"game_start","category":"Default","description":"An
+    indicator for when a game has started.","updateTime":1677754433624,"tactFilePatterns":[{"position":"Vest","tactFile":{"name":"HeartBeat_1_a783794c","tracks":[{"enable":true,"effects":[{"name":"","offsetTime":265,"startTime":0,"modes":{"VestFront":{"dotMode":{"dotConnected":false,"feedback":[{"startTime":0,"endTime":88,"playbackType":"NONE","pointList":[]},{"startTime":88,"endTime":176,"playbackType":"NONE","pointList":[{"intensity":0.4,"index":1},{"intensity":0.4,"index":5},{"intensity":0.4,"index":0}]},{"startTime":176,"endTime":265,"playbackType":"NONE","pointList":[]}]},"pathMode":{"feedback":[{"movingPattern":"CONST_SPEED","playbackType":"NONE","visible":true,"pointList":[]}]},"mode":"DOT_MODE"},"VestBack":{"dotMode":{"dotConnected":true,"feedback":[]},"pathMode":{"feedback":[{"movingPattern":"CONST_SPEED","playbackType":"NONE","visible":true,"pointList":[]}]},"mode":"DOT_MODE"}}}]},{"enable":true,"effects":[{"name":"","offsetTime":223,"startTime":266,"modes":{"VestFront":{"dotMode":{"dotConnected":false,"feedback":[{"startTime":0,"endTime":74,"playbackType":"NONE","pointList":[]},{"startTime":74,"endTime":148,"playbackType":"NONE","pointList":[{"intensity":0.4,"index":1},{"intensity":0.4,"index":5}]},{"startTime":148,"endTime":223,"playbackType":"NONE","pointList":[]}]},"pathMode":{"feedback":[{"movingPattern":"CONST_SPEED","playbackType":"NONE","visible":true,"pointList":[]}]},"mode":"DOT_MODE"},"VestBack":{"dotMode":{"dotConnected":true,"feedback":[]},"pathMode":{"feedback":[{"movingPattern":"CONST_SPEED","playbackType":"NONE","visible":true,"pointList":[]}]},"mode":"DOT_MODE"}}}]}],"layout":{"name":"Tactot","type":"Tactot","layouts":{"VestFront":[{"index":0,"x":0.0,"y":0.0},{"index":1,"x":0.333,"y":0.0},{"index":2,"x":0.667,"y":0.0},{"index":3,"x":1.0,"y":0.0},{"index":4,"x":0.0,"y":0.25},{"index":5,"x":0.333,"y":0.25},{"index":6,"x":0.667,"y":0.25},{"index":7,"x":1.0,"y":0.25},{"index":8,"x":0.0,"y":0.5},{"index":9,"x":0.333,"y":0.5},{"index":10,"x":0.667,"y":0.5},{"index":11,"x":1.0,"y":0.5},{"index":12,"x":0.0,"y":0.75},{"index":13,"x":0.333,"y":0.75},{"index":14,"x":0.667,"y":0.75},{"index":15,"x":1.0,"y":0.75},{"index":16,"x":0.0,"y":1.0},{"index":17,"x":0.333,"y":1.0},{"index":18,"x":0.667,"y":1.0},{"index":19,"x":1.0,"y":1.0}],"VestBack":[{"index":0,"x":0.0,"y":0.0},{"index":1,"x":0.333,"y":0.0},{"index":2,"x":0.667,"y":0.0},{"index":3,"x":1.0,"y":0.0},{"index":4,"x":0.0,"y":0.25},{"index":5,"x":0.333,"y":0.25},{"index":6,"x":0.667,"y":0.25},{"index":7,"x":1.0,"y":0.25},{"index":8,"x":0.0,"y":0.5},{"index":9,"x":0.333,"y":0.5},{"index":10,"x":0.667,"y":0.5},{"index":11,"x":1.0,"y":0.5},{"index":12,"x":0.0,"y":0.75},{"index":13,"x":0.333,"y":0.75},{"index":14,"x":0.667,"y":0.75},{"index":15,"x":1.0,"y":0.75},{"index":16,"x":0.0,"y":1.0},{"index":17,"x":0.333,"y":1.0},{"index":18,"x":0.667,"y":1.0},{"index":19,"x":1.0,"y":1.0}]}}}}],"audioFilePatterns":[],"eventTime":480},{"enable":true,"intensity":100,"key":"correct_left","category":"Default","description":"","updateTime":1730271595822,"tactFilePatterns":[],"audioFilePatterns":[{"patternId":"66a34f8961b92068575cd714","snapshotId":"6720a143e76eb102dd694bfa","position":"Vest","clip":{"id":"","name":"Button
+    Click (Left)","version":2,"duration":4,"patterns":{"GloveR":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg="],"GloveL":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg="]}}}],"eventTime":40},{"enable":true,"intensity":100,"key":"wrong_left","category":"Default","description":"","updateTime":1730271805694,"tactFilePatterns":[],"audioFilePatterns":[{"patternId":"66a3564461b92068575cd75b","snapshotId":"6721da3f638059607b93b208","position":"Vest","clip":{"id":"","name":"Slap
+    (Left Hand)","version":2,"duration":4,"patterns":{"GloveR":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA="],"GloveL":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","YWFhYWFhAAAAAAAAAAAAAAAAAAA=","Ojo6Ojo6AAAAAAAAAAAAAAAAAAA=","EhISEhISAAAAAAAAAAAAAAAAAAA="]}}}],"eventTime":40},{"enable":true,"intensity":100,"key":"wrong_right","category":"Default","description":"","updateTime":1730271819832,"tactFilePatterns":[],"audioFilePatterns":[{"patternId":"66a3564461b92068575cd75a","snapshotId":"6721da3f638059607b93b209","position":"Vest","clip":{"id":"","name":"Slap
+    (RIght Hand)","version":2,"duration":4,"patterns":{"GloveR":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","YWFhYWFhAAAAAAAAAAAAAAAAAAA=","Ojo6Ojo6AAAAAAAAAAAAAAAAAAA=","EhISEhISAAAAAAAAAAAAAAAAAAA="],"GloveL":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA="]}}}],"eventTime":40},{"enable":true,"intensity":100,"key":"wrong_both","category":"Default","description":"","updateTime":1730271834495,"tactFilePatterns":[],"audioFilePatterns":[{"patternId":"66a3564461b92068575cd75b","snapshotId":"6721da3f638059607b93b208","position":"Vest","clip":{"id":"","name":"Slap
+    (Left Hand)","version":2,"duration":4,"patterns":{"GloveR":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA="],"GloveL":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","YWFhYWFhAAAAAAAAAAAAAAAAAAA=","Ojo6Ojo6AAAAAAAAAAAAAAAAAAA=","EhISEhISAAAAAAAAAAAAAAAAAAA="]}}},{"patternId":"66a3564461b92068575cd75a","snapshotId":"6721da3f638059607b93b209","position":"Vest","clip":{"id":"","name":"Slap
+    (RIght Hand)","version":2,"duration":4,"patterns":{"GloveR":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","ZGRkZGRkAAAAAAAAAAAAAAAAAAA=","YWFhYWFhAAAAAAAAAAAAAAAAAAA=","Ojo6Ojo6AAAAAAAAAAAAAAAAAAA=","EhISEhISAAAAAAAAAAAAAAAAAAA="],"GloveL":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA="]}}}],"eventTime":40},{"enable":true,"intensity":100,"key":"correct_both","category":"Default","description":"","updateTime":1730271572310,"tactFilePatterns":[],"audioFilePatterns":[{"patternId":"66a34f8961b92068575cd714","snapshotId":"6720a143e76eb102dd694bfa","position":"Vest","clip":{"id":"","name":"Button
+    Click (Left)","version":2,"duration":4,"patterns":{"GloveR":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg="],"GloveL":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg="]}}},{"patternId":"66a34f8961b92068575cd713","snapshotId":"6720a143e76eb102dd694bfb","position":"Vest","clip":{"id":"","name":"Button
+    Click (Right)","version":2,"duration":4,"patterns":{"GloveR":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAABgAAAAAAAAAAABg=","AGQAAAAAAAAABgAAAAAAAAAAABg=","AGQAAAAAAAAABgAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAAAgAAAAAAAAAAABg=","AGQAAAAAAAAAAgAAAAAAAAAAABg=","AGQAAAAAAAAAAgAAAAAAAAAAABg="],"GloveL":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg="]}}}],"eventTime":40},{"enable":true,"intensity":100,"key":"correct_right","category":"Default","description":"","updateTime":1730271617774,"tactFilePatterns":[],"audioFilePatterns":[{"patternId":"66a34f8961b92068575cd713","snapshotId":"6720a143e76eb102dd694bfb","position":"Vest","clip":{"id":"","name":"Button
+    Click (Right)","version":2,"duration":4,"patterns":{"GloveR":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAABgAAAAAAAAAAABg=","AGQAAAAAAAAABgAAAAAAAAAAABg=","AGQAAAAAAAAABgAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAAAgAAAAAAAAAAABg=","AGQAAAAAAAAAAgAAAAAAAAAAABg=","AGQAAAAAAAAAAgAAAAAAAAAAABg="],"GloveL":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg="]}}}],"eventTime":40},{"enable":true,"intensity":100,"key":"touch_catchable_left","category":"Default","description":"","updateTime":1730272039015,"tactFilePatterns":[],"audioFilePatterns":[{"patternId":"66a34f8961b92068575cd714","snapshotId":"6720a143e76eb102dd694bfa","position":"Vest","clip":{"id":"","name":"Button
+    Click (Left)","version":2,"duration":4,"patterns":{"GloveR":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAABg="],"GloveL":["AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AAAAAAAAAAAAAAAAAAAAAAAAAAA=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg=","AGQAAAAAAAAAKAAAAAAAAAAAABg="]}}}],"eventTime":40}],"categoryOptions":["Default"],"description":""},"errorMessage":null,"timestamp":1730272037460,"code":200}'

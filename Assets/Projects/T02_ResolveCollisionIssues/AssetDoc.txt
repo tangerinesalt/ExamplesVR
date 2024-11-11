@@ -1,5 +1,0 @@
-资产：
-1.FinalIk：在人物模型中使用，将模型的对应骨骼复制出来并与VR Origin的head、leftHand、rightHand进行绑定调整，
-随后将复制的骨骼在模型中配置，用于解决模型IK问题；
-2.character_controller：用于模拟上坡等物理效果；
-3.XRI：主要用于VR设备的输入绑定；

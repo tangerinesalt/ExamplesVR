@@ -18,10 +18,10 @@ EditorBuildSettings:
     path: Assets/MirrorExamplesVR/Scenes/SceneVR-UnityDemo/SceneVR-UnityDemo.unity
     guid: e9f9abc5a3a744cb8b39c79bb2a1feca
   - enabled: 1
-    path: Assets/Projects/T06_ColliderWithMovingUpwardsTest/Transmitters.unity
+    path: Assets/Projects/TestIn202410m/T06_ColliderWithMovingUpwardsTest/Transmitters.unity
     guid: 8b7eb633acc7d3248969a95d766b2892
   - enabled: 1
-    path: Assets/Projects/T06_ColliderWithMovingUpwardsTest/UseRigToCollision.unity
+    path: Assets/Projects/TestIn202410m/T06_ColliderWithMovingUpwardsTest/UseRigToCollision.unity
     guid: 0f550ced3932ab24a8727346077d289c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 888d48b45cc3246d29397bcf04d21676, type: 2}

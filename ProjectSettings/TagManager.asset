@@ -23,10 +23,10 @@ TagManager:
   - XR_GrapInteractiveObj
   - Ground
   - VR_Hand
-  - 
-  - 
-  - 
-  - 
+  - Grabbing
+  - Grabbable
+  - Hand
+  - HandPlayer
   - 
   - 
   - 

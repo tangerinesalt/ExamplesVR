@@ -189,6 +189,7 @@ namespace Mirror
             if (syncScale)
                 target.localScale = interpolateScale ? interpolated.scale : endGoal.scale;
         }
+        
 
         // client->server teleport to force position without interpolation.
         // otherwise it would interpolate to a (far away) new position.
@@ -233,6 +234,54 @@ namespace Mirror
             //      BOTH Teleport(pos) and target.position=pos
             RpcTeleport(destination, rotation);
         }
+        [Server]
+        public void S_Teleport(Vector3 destination)
+        {
+            // TODO what about host mode?
+            if (isServerOnly) OnTeleport(destination);
+
+            // if a client teleports, we need to broadcast to everyone else too
+            // TODO the teleported client should ignore the rpc though.
+            //      otherwise if it already moved again after teleporting,
+            //      the rpc would come a little bit later and reset it once.
+            // TODO or not? if client ONLY calls Teleport(pos), the position
+            //      would only be set after the rpc. unless the client calls
+            //      BOTH Teleport(pos) and target.position=pos
+            RpcTeleport(destination);
+        }
+        
+        [Server]
+        public void S_Teleport(Vector3 destination, Quaternion rotation)
+        {
+            // TODO what about host mode?
+            if (isServerOnly) OnTeleport(destination, rotation);
+
+            // if a client teleports, we need to broadcast to everyone else too
+            // TODO the teleported client should ignore the rpc though.
+            //      otherwise if it already moved again after teleporting,
+            //      the rpc would come a little bit later and reset it once.
+            // TODO or not? if client ONLY calls Teleport(pos), the position
+            //      would only be set after the rpc. unless the client calls
+            //      BOTH Teleport(pos) and target.position=pos
+            RpcTeleport(destination, rotation);
+        }
+        
+        [Server]
+        public void S_Teleport(Transform target)
+        {
+            // TODO what about host mode?
+            if (isServerOnly) OnTeleport(target.position, target.rotation);
+
+            // if a client teleports, we need to broadcast to everyone else too
+            // TODO the teleported client should ignore the rpc though.
+            //      otherwise if it already moved again after teleporting,
+            //      the rpc would come a little bit later and reset it once.
+            // TODO or not? if client ONLY calls Teleport(pos), the position
+            //      would only be set after the rpc. unless the client calls
+            //      BOTH Teleport(pos) and target.position=pos
+            RpcTeleport(target.position, target.rotation);
+        }
+        
 
         // server->client teleport to force position without interpolation.
         // otherwise it would interpolate to a (far away) new position.

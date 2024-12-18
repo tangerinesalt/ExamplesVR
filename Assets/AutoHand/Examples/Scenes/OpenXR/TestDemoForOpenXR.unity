@@ -192,6 +192,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4670683954822035278, guid: 5e50eba45ef63694ab6dad66efcbb007, type: 3}
+      propertyPath: disableCollisionTracking
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1039263618, guid: 5e50eba45ef63694ab6dad66efcbb007, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

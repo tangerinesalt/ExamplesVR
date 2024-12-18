@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -91,7 +92,8 @@ namespace Autohand {
             if((overrideIgnoreHighlight || hand.usingHighlight) && hand.highlightLayers != 0 && (overrideIgnoreHighlight || hand.holdingObj == null && !hand.IsGrabbing())) {
                 int grabbingLayer = LayerMask.NameToLayer(Hand.grabbingLayerName);
                 int gabbingMask = LayerMask.GetMask(Hand.grabbingLayerName);
-                highlightColliderNonAllocCount = Physics.OverlapSphereNonAlloc(hand.palmTransform.position + hand.palmTransform.forward * hand.reachDistance / 3f, hand.reachDistance, highlightCollidersNonAlloc, hand.highlightLayers & ~(hand.ignoreGrabCheckLayers.value), QueryTriggerInteraction.Collide);
+                //highlightColliderNonAllocCount = Physics.OverlapSphereNonAlloc(hand.palmTransform.position + hand.palmTransform.forward * hand.reachDistance / 3f, hand.reachDistance, highlightCollidersNonAlloc, hand.highlightLayers & ~(hand.ignoreGrabCheckLayers.value), QueryTriggerInteraction.Collide);
+                highlightColliderNonAllocCount = Physics.OverlapBoxNonAlloc(hand.palmTransform.position + hand.palmTransform.forward * hand.reachDistance / 2f, new Vector3(hand.collisionPrecision.x,hand.collisionPrecision.y, hand.reachDistance), highlightCollidersNonAlloc, Quaternion.LookRotation(hand.palmTransform.forward.normalized), hand.highlightLayers & ~(hand.ignoreGrabCheckLayers.value), QueryTriggerInteraction.Collide);
                 foundHighlightGrabbables.Clear();
 
                 for(int i = 0; i < highlightColliderNonAllocCount; i++) {
@@ -185,8 +187,8 @@ namespace Autohand {
             closestGrabs.Clear();
             closestHits.Clear();
             var checkSphereRadius = hand.reachDistance * 1.35f;
-            int overlapCount = Physics.OverlapSphereNonAlloc(palmPosition + palmForward * (checkSphereRadius * 0.5f), checkSphereRadius, handHighlightNonAlloc, layerMask, QueryTriggerInteraction.Collide);
-
+            //int overlapCount = Physics.OverlapSphereNonAlloc(palmPosition + palmForward * (checkSphereRadius * 0.5f), checkSphereRadius, handHighlightNonAlloc, layerMask, QueryTriggerInteraction.Collide);
+            int overlapCount = Physics.OverlapBoxNonAlloc(palmPosition + palmForward * hand.reachDistance, new Vector3(hand.collisionPrecision.x, hand.collisionPrecision.y, checkSphereRadius), handHighlightNonAlloc, Quaternion.LookRotation(palmForward.normalized), layerMask, QueryTriggerInteraction.Collide);
 
             for(int i = 0; i < overlapCount; i++) {
                 col = handHighlightNonAlloc[i];

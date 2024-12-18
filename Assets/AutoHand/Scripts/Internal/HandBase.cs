@@ -72,6 +72,8 @@ namespace Autohand {
         [Space]
         [Tooltip("Maximum distance for pickup"), Min(0.01f)]
         public float reachDistance = 0.2f;
+        [Tooltip("The precision with which an object can be touched by the palm of the hand"), Min(0.01f)]
+        public Vector2 collisionPrecision = new Vector2(0.1f, 0.1f);
 
 
         [AutoToggleHeader("Enable Movement", 0, 0, tooltip = "Whether or not to enable the hand's Rigidbody Physics movement")]
@@ -506,7 +508,11 @@ namespace Autohand {
         protected virtual void OnDrawGizmosSelected() {
             var radius = reachDistance;
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(palmTransform.position + palmTransform.forward * radius, radius);
+            //Gizmos.DrawWireSphere(palmTransform.position + palmTransform.forward * radius, radius);
+
+            Vector3 direction = palmTransform.forward.normalized;
+            Gizmos.matrix = Matrix4x4.TRS(palmTransform.position + palmTransform.forward * radius, Quaternion.LookRotation(direction), Vector3.one);  
+            Gizmos.DrawWireCube(Vector3.zero,  new Vector3(collisionPrecision.x,collisionPrecision.y,radius) * 2);
         }
     }
 }

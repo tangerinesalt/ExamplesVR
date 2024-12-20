@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Projects/TestIn202410m/T06_ColliderWithMovingUpwardsTest/UseRigToCollision.unity
     guid: 0f550ced3932ab24a8727346077d289c
   - enabled: 1
-    path: Assets/Projects/TestIn202410m/T05_MirrorTestNontVRcomponents/MirrorTestNontVRcomponents_ByT04.unity
+    path: Assets/Projects/TestIn202410m/T05_MirrorRpcTestNontVRcomponents/MirrorTestNontVRcomponents_ByT04.unity
     guid: c51727926fdcb3c4e87a0ca73df726bd
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 888d48b45cc3246d29397bcf04d21676, type: 2}

@@ -10,6 +10,10 @@ using Mirror;
 
 namespace Voltage
 {
+    /// <summary>
+    /// 自定义玩家输入控制脚本,允许双手运动,或左手运动右手旋转
+    /// 提供了移动和转向的控制接口
+    /// </summary>
     public class OpenXRHandPlayerControllerLink_Voltage : MonoBehaviour
     {
         public AutoHandPlayer player;

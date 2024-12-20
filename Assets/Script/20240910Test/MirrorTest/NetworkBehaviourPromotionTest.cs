@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Tangerine;
 
+/// <summary>
+/// 测试网络行为发布器NetworkBehaviourPromotion的转发能力
+/// </summary>
 public class NetworkBehaviourPromotionTest : MonoBehaviour
 {
     public GameObject m_player;

@@ -9,6 +9,7 @@ namespace Tangerine
 {
     /// <summary>
     /// 作用：客户端控制服务器端执行在所有客户端上的行为
+    /// 依赖networkIdentity组件,当前物体缺少Identity组件会报未知错误    
     /// </summary>
     public class NetworkBehaviourPromotion : NetworkBehaviour
     {

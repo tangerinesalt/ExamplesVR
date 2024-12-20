@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// 碰撞触发器
+/// 碰撞触发器事件
 /// </summary>
 public class ColliderEvent : MonoBehaviour
 {

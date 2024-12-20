@@ -6,7 +6,9 @@ using UnityEngine.UI;
 using Voltage;
 using Tangerine;
 
-
+/// <summary>
+/// 测试网络行为发布器NetworkBehaviourPromotion的转发能力
+/// </summary>
 public class rayInteractionTest_cube : MonoBehaviour
 {
     public Button button;

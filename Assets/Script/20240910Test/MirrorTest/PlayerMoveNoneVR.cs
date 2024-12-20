@@ -5,6 +5,9 @@ using Mirror;
 using Unity.Mathematics;
 using UnityEngine;
 
+/// <summary>
+/// 控制对象移动
+/// </summary>
 public class PlayerMoveNoneVR : MonoBehaviour
 {
 

@@ -10,6 +10,9 @@ using Tangerine;
 
 namespace Voltage
 {
+    /// <summary>
+    /// 继承抓取物体类,添加了运动学模拟\网络行为发布等功能
+    /// </summary>
     [RequireComponent(typeof(NetworkBehaviourPromotion))]
     public class Grabbable_Voltage : Grabbable
     {

@@ -9,11 +9,20 @@ namespace Tangerine
 {
     /// <summary>
     /// 作用：客户端控制服务器端执行在所有客户端上的行为
-    /// 依赖networkIdentity组件,当前物体缺少Identity组件会报未知错误    
+    /// 依赖networkIdentity组件,当前物体缺少Identity组件会报未知错误
     /// </summary>
     public class NetworkBehaviourPromotion : NetworkBehaviour
     {
         private static Dictionary<string, MethodInfo> cachedMethods = new Dictionary<string, MethodInfo>();
+
+        //检查是否包含依赖组件
+        private void Start()
+        {
+            if(gameObject.GetComponent<NetworkIdentity>()==null)
+            {
+                Debug.LogError("NetworkBehaviourPromotion must be attach a NetworkIdentity component but not found.",this);
+            }
+        }
 
         //调用示例：
         // if (_networkBehaviourPromotion.isServer) 
@@ -45,6 +54,7 @@ namespace Tangerine
             }
         }
 
+        //服务器端调用
         [Server]
         public void S_BehavioursPromotion(GameObject _gameObject, string className, string MethodName)
         {
@@ -59,6 +69,7 @@ namespace Tangerine
             Rpc_BehavioralExecution(_gameObject, className, MethodName);
         }
 
+        //客户端调用,服务器端执行
         [Command(requiresAuthority = false)]
         public void Cmd_BehavioursPromotion(GameObject _gameObject, string className, string MethodName, NetworkConnectionToClient sender = null)
         {
@@ -69,14 +80,13 @@ namespace Tangerine
             //Debug.Log("Cmd_BehavioursPromotion");
             S_BehavioursPromotion(_gameObject, className, MethodName);
         }
+
         [TargetRpc]
         private void Target_Behavioralpromotion(NetworkConnection connection,GameObject _gameObject, string className, string MethodName)
         {
             ExecuteMethodOnClient(_gameObject, className, MethodName);
         }
-
         
-
         /// <summary>
         /// 所有客户端执行
         /// </summary>
@@ -89,6 +99,7 @@ namespace Tangerine
             ExecuteMethodOnClient(_gameObject, className, MethodName);
         }
 
+        //方法体，通过反射调用方法，调用对象需要有networkidentity组件
         private void ExecuteMethodOnClient(GameObject _gameObject, string className, string methodName)
         {
             // 获取类型

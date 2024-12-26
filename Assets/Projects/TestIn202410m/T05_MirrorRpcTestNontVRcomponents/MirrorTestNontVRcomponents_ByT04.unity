@@ -210,7 +210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &83635969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83635968}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88433b8ab68d4cb4e82a24c54a7edfc0, type: 3}
   m_Name: 
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83635968}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4967b7181173c78449ced0cd76518929, type: 3}
   m_Name: 
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_player: {fileID: 31504441}
   isServer: 0
   isClient: 0
-  isCmd: 1
+  isCmd: 0
   isExcludeLocalPlayer: 0
   m_gameobjectPrefab: {fileID: 6017044296742023435, guid: bf084eaf85464dd4796d3a882fa5cb23, type: 3}
   m_SpawnPosition: {x: 0, y: 0.5, z: 0}
@@ -6376,6 +6376,14 @@ PrefabInstance:
       propertyPath: sceneId
       value: 2003030667
       objectReference: {fileID: 0}
+    - target: {fileID: 6892973870137829191, guid: 734623691cc9d5042b94144980538030, type: 3}
+      propertyPath: isCmd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892973870137829191, guid: 734623691cc9d5042b94144980538030, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7554398892737245175, guid: 734623691cc9d5042b94144980538030, type: 3}
       propertyPath: m_Name
       value: Y Bot_NontVRModel
@@ -7395,7 +7403,7 @@ MonoBehaviour:
   autoConnectClientBuild: 0
   sendRate: 30
   offlineScene: 
-  onlineScene: Assets/Projects/TestIn202410m/T05_MirrorTestNontVRcomponents/MirrorTestNontVRcomponents_ByT04.unity
+  onlineScene: 
   transport: {fileID: 0}
   networkAddress: localhost
   maxConnections: 100

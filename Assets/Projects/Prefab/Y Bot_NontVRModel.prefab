@@ -3266,6 +3266,8 @@ GameObject:
   - component: {fileID: 2147740073157845658}
   - component: {fileID: 3400282731292358761}
   - component: {fileID: 247349889236749979}
+  - component: {fileID: 6892973870137829191}
+  - component: {fileID: 1193913695537317717}
   m_Layer: 6
   m_Name: Y Bot_NontVRModel
   m_TagString: Untagged
@@ -4158,6 +4160,40 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &6892973870137829191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554398892737245175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48bf30ac01523d43ac3f1352a8839de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  isCmd: 1
+  isExcludeLocalPlayer: 0
+  m_gameobjectPrefab: {fileID: 6017044296742023435, guid: bf084eaf85464dd4796d3a882fa5cb23, type: 3}
+  m_SpawnPosition: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1193913695537317717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554398892737245175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88433b8ab68d4cb4e82a24c54a7edfc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!1 &7600891567553685603
 GameObject:
   m_ObjectHideFlags: 0

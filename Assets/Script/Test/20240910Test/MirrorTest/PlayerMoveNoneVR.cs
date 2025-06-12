@@ -13,7 +13,6 @@ public class PlayerMoveNoneVR : MonoBehaviour
 
     private Animator animator;
     [SerializeField] private GameObject m_gameobjectPrefab;
-    [SerializeField] private bool m_allowSpawning = false;
     float Horizontal;
     float Vertical;
     [SerializeField] float moveSpeed = 0.1f;

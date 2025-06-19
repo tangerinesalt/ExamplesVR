@@ -145,7 +145,7 @@ MonoBehaviour:
     Hold <b>LT</b> or <b>RT</b> to grab and check
     the label.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -279,7 +279,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: LT/RT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -413,8 +413,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press A/B to close
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
-  m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -548,7 +548,7 @@ MonoBehaviour:
   m_text: Move any controller to aimat 'SELECT THIS BOX' then press <b>LT or RT</b>
     to confirm.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -776,7 +776,7 @@ MonoBehaviour:
     and load it onto the
     spool vehicle.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -910,7 +910,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "<b>Grab (LT/RT)</b> the cable, then place it onto the designated point.\r"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1044,7 +1044,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press the button to release the cable.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1328,7 +1328,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Head to the area where the cable release is complete to view the results.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b312cc2da796b4489a8a9225c4a1bbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 290d158031622c645aa55f8bd981be12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1535,7 +1535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b312cc2da796b4489a8a9225c4a1bbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 290d158031622c645aa55f8bd981be12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1702,7 +1702,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Now, carefully <b>Load</b> the Reel onto the spool vehicle.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1836,7 +1836,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: LS/RS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1968,7 +1968,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b312cc2da796b4489a8a9225c4a1bbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 290d158031622c645aa55f8bd981be12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2045,7 +2045,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2289,7 +2289,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b312cc2da796b4489a8a9225c4a1bbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 290d158031622c645aa55f8bd981be12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2366,7 +2366,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'TASK: Select the LBD-15.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2500,7 +2500,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: (Check function keys)
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2787,8 +2787,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5ed6019e80fbca342a3082e92e555590, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 5697c26ee2ef0c848996640f6a3d3432, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2869,14 +2869,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5803922}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 123d1524e003a624cb4ac7d7ec0edbcb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5697c26ee2ef0c848996640f6a3d3432, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2953,7 +2953,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Push <b>LS</b> or <b>RS</b>  to move to the Reel.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3087,7 +3087,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Check task list
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3222,7 +3222,7 @@ MonoBehaviour:
   m_text: <b>Grab (LT/RT)</b> the highlighted ends of the two MC4 connectors and
     align them to complete the connection.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3354,7 +3354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b312cc2da796b4489a8a9225c4a1bbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 290d158031622c645aa55f8bd981be12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3429,7 +3429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b312cc2da796b4489a8a9225c4a1bbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 290d158031622c645aa55f8bd981be12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3506,7 +3506,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Push <b>LS</b> or <b>RS</b>  to move toward the Box.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3788,7 +3788,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b312cc2da796b4489a8a9225c4a1bbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 290d158031622c645aa55f8bd981be12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3830,9 +3830,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6011717608512156876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 286.4, y: -94.45}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 572.8, y: 188.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7414244622219234689
@@ -3868,8 +3868,8 @@ MonoBehaviour:
     and load it onto the spool
     vehicle.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
-  m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4151,7 +4151,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b312cc2da796b4489a8a9225c4a1bbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 290d158031622c645aa55f8bd981be12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4228,7 +4228,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Left / Right Stick;Push it to move
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4401,7 +4401,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: X/Y
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4535,7 +4535,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'TASK: Select the correct Combiner Box.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4672,7 +4672,7 @@ MonoBehaviour:
     <b>Move (LS/RS)</b> toward
     the highlighted box.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4806,7 +4806,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: A/B
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4943,7 +4943,7 @@ MonoBehaviour:
     Hold <b>LT</b> or <b>RT</b> to grab and
     check the label.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5077,8 +5077,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press X/Y to close
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
-  m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5212,7 +5212,7 @@ MonoBehaviour:
   m_text: Now, install the highlighted positive and negative jumper cables onto the
     highlighted part of the ground tube.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5384,7 +5384,7 @@ MonoBehaviour:
   m_text: <b>Grab (LT/RT)</b> the highlighted ends of the two MC4 connectors and
     align them to complete the connection.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5519,7 +5519,7 @@ MonoBehaviour:
   m_text: "Move any controller to aim\r\nat 'SELECT THE REEL' \r\nthen press <b>LT</b>
     or <b>RT</b> to confirm."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5654,7 +5654,7 @@ MonoBehaviour:
   m_text: Take out the jumper labeled <b>CIR-1</b> inside the box, and place it in
     the circle.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5865,7 +5865,7 @@ MonoBehaviour:
 
     Now head to the installation area to continue.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6076,7 +6076,7 @@ MonoBehaviour:
 
     Now head to the installation area to continue.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6211,7 +6211,7 @@ MonoBehaviour:
   m_text: <b>Grab (LT/RT)</b> the highlighted ends of both MC4 connectors, then align
     and connect them securely.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6343,8 +6343,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 42608cc9d90e2f446abacab298fa37a8, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 5697c26ee2ef0c848996640f6a3d3432, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6421,7 +6421,7 @@ MonoBehaviour:
   m_text: <b>Grab (LT/RT)</b> the highlighted ends of the two MC4 connectors and
     align them to complete the connection.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6660,7 +6660,7 @@ MonoBehaviour:
   m_text: Now, install the highlighted positive and negative jumper cables onto the
     highlighted part of the torque tube.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6795,7 +6795,7 @@ MonoBehaviour:
   m_text: <b>Grab (LT/RT)</b> the highlighted ends of both MC4 connectors,then align
     and connect them securely.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6948,7 +6948,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &400373771927015348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6979,8 +6979,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eGOType: 0
-  m_OpenLeftPanel: {fileID: -6407075695396898017, guid: 2d70e6f33e6ce8d489087ddb6aedbce6, type: 3}
-  m_OpenRightPanel: {fileID: 3367267951022979363, guid: 2d70e6f33e6ce8d489087ddb6aedbce6, type: 3}
+  m_OpenLeftPanel: {fileID: -7234728225470745026, guid: 4948aedcb6f811f419c2053a4629cbc6, type: 3}
+  m_OpenRightPanel: {fileID: -5251999270269032585, guid: 4948aedcb6f811f419c2053a4629cbc6, type: 3}
   m_panelDistance: 0.6
   m_Offset: 0
   m_LeftPanelTF: {fileID: 4790478761740827918}
@@ -7157,14 +7157,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5803922}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 123d1524e003a624cb4ac7d7ec0edbcb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5697c26ee2ef0c848996640f6a3d3432, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7241,7 +7241,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Now, carefully <b>Load</b> the Box onto the spool vehicle.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -7634,7 +7634,7 @@ MonoBehaviour:
 
     Press it to grab'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -3844168007981824371, guid: 34ae05a920414944abbaa1915ebacd0d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

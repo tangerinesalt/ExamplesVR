@@ -22,6 +22,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PrimaryButton",
+                    "type": "Button",
+                    "id": "92fd6ed5-601c-4441-8315-c3fe8a9777f9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SecondaryButton",
+                    "type": "Button",
+                    "id": "df1284f1-9f3a-4cf8-a539-d426e4b3195d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -44,6 +62,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Haptic",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8eef13c9-e24e-4d7f-bb41-b8e41b1c3556",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4127000d-0dab-4222-8508-92d0b6078fb9",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -70,6 +110,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PrimaryButton",
+                    "type": "Button",
+                    "id": "7e9edc75-cc28-4048-bf16-315a8c06ee1f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SecondaryButton",
+                    "type": "Button",
+                    "id": "573377c7-c92a-48d4-a6de-bfabc1a91fdc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -92,6 +150,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Haptic",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e259eebe-fbc7-4aef-8c1c-a20eb53b9a18",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "769d3915-68ba-4150-a660-320171577c95",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -36,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 25754494891241723}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: -0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -100,7 +100,7 @@ MonoBehaviour:
   reachDistance: 0.15
   collisionPrecision: {x: 0.1, y: 0.1}
   enableMovement: 1
-  follow: {fileID: 6431419864276652046}
+  follow: {fileID: 8957228440229500414}
   throwPower: 1.25
   gentleGrabSpeed: 1
   advancedFollowSettings: 1
@@ -815,6 +815,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04, y: 0.02, z: 0.02}
   m_Center: {x: -0.01, y: 0, z: 0}
+--- !u!1 &106388453281278167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7969829593599010986}
+  m_Layer: 0
+  m_Name: Camera Offset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7969829593599010986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106388453281278167}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6558232028824314226}
+  m_Father: {fileID: 4108269490913295332}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &128456082926673976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,9 +1512,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8587405756493149203}
-  - {fileID: 7212998414539441121}
-  - {fileID: 6558232028824314226}
+  - {fileID: 7359904285624672986}
+  - {fileID: 7969829593599010986}
   - {fileID: 8291544568488365034}
   - {fileID: 5036994725230391510}
   - {fileID: 7448709665811741583}
@@ -3222,6 +3253,8 @@ GameObject:
   - component: {fileID: 2678197369648273847}
   - component: {fileID: 6911572146852062040}
   - component: {fileID: 8048634899465771628}
+  - component: {fileID: 6113456094941309414}
+  - component: {fileID: 8539614353006313324}
   m_Layer: 31
   m_Name: Camera (head)
   m_TagString: MainCamera
@@ -3243,7 +3276,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 847409012852148847}
-  m_Father: {fileID: 4108269490913295332}
+  m_Father: {fileID: 7969829593599010986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8451086177947369092
 Camera:
@@ -3324,7 +3357,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327716443429617990}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
   m_Name: 
@@ -3335,6 +3368,184 @@ MonoBehaviour:
   m_TrackingType: 0
   m_UpdateType: 0
   m_UseRelativeTransform: 1
+--- !u!114 &6113456094941309414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327716443429617990}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_IgnoreTrackingState: 0
+  m_PositionInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Position
+      m_Type: 0
+      m_ExpectedControlType: Vector3
+      m_Id: f2fedfd5-6d18-4c76-8f47-ee44f0f46959
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 7862207684358717888, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_RotationInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Rotation
+      m_Type: 0
+      m_ExpectedControlType: Quaternion
+      m_Id: 6b954605-caf8-476a-beb1-ea309615c109
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -530380113134220495, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_TrackingStateInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Tracking State
+      m_Type: 0
+      m_ExpectedControlType: Integer
+      m_Id: e4763960-f0b7-4f97-8ef9-4a6f90b4fd02
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 1031966339891076899, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_PositionAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 78b42383-ce79-474a-afbd-3f0e6febc9ea
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_RotationAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 16a91f65-f313-418a-ad7f-36791afcc1b5
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+--- !u!114 &8539614353006313324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327716443429617990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_IgnoreTrackingState: 1
+  m_PositionInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Position
+      m_Type: 0
+      m_ExpectedControlType: Vector3
+      m_Id: 874d5ad0-05c9-4e99-ae5c-5d7d45cdb947
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 4d7c119a-9aa5-4974-850a-3ddf40d2af84
+        m_Path: <XRHMD>/centerEyePosition
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Position
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 4f355d74-3b67-4adb-bec9-7214532ba2d0
+        m_Path: <HandheldARInputDevice>/devicePosition
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Position
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_RotationInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Rotation
+      m_Type: 0
+      m_ExpectedControlType: Quaternion
+      m_Id: 64649894-220a-42fe-ada9-0f48e6ed5ca0
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 26b80d70-b689-4c11-bb0c-d6292af15226
+        m_Path: <XRHMD>/centerEyeRotation
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Rotation
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 26f31e14-3fed-4b0f-aff3-2af675756b8c
+        m_Path: <HandheldARInputDevice>/deviceRotation
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Rotation
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_TrackingStateInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Tracking State
+      m_Type: 0
+      m_ExpectedControlType: Integer
+      m_Id: be1437e2-9f15-460c-8c13-179ddbb20d79
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: abb2874d-0df7-419b-b558-9bcdef1ecfbc
+        m_Path: <XRHMD>/trackingState
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Tracking State
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PositionAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0588229b-536e-4b02-8364-e692ec39da26
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_RotationAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4c5c0404-1eba-45e1-a986-f93320837c65
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1330571061678088054
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,6 +3665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6735936777814609216}
   - component: {fileID: 5605079671790658450}
+  - component: {fileID: 8308887738620305696}
   m_Layer: 0
   m_Name: VRObjAutoHand
   m_TagString: Untagged
@@ -3514,13 +3726,31 @@ MonoBehaviour:
   m_RightHandProjector: {fileID: 5697125800073761284}
   m_HapticActionLeft: {fileID: 8186299232110945016, guid: 4948aedcb6f811f419c2053a4629cbc6, type: 3}
   m_HapticActionRight: {fileID: 3482437159631246401, guid: 4948aedcb6f811f419c2053a4629cbc6, type: 3}
-  isCanOpenMainMenu: 0
-  isCanOpenMainMenuLeft: 0
-  isCanOpenMainMenuRight: 0
+  isCanOpenMainMenu: 1
+  isCanOpenMainMenuLeft: 1
+  isCanOpenMainMenuRight: 1
   mainMenu: {fileID: 0}
   m_currentTaskName: CustomTask
   isFinish: 0
   state: 0
+--- !u!114 &8308887738620305696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380691337222299206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6025ae0569b2b49bbada006357979d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OpenCameraAdaptiveSetting: 1
+  _camera: {fileID: 8451086177947369092}
+  m_cameraOffset: {fileID: 7969829593599010986}
+  m_cameraHeight: 1.1176
+  m_controllerOffset: {fileID: 7359904285624672986}
+  m_controllerHeight: 1
 --- !u!1 &1396184008601471843
 GameObject:
   m_ObjectHideFlags: 0
@@ -6190,6 +6420,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04, y: 0.02, z: 0.02}
   m_Center: {x: -0.01, y: 0, z: 0.0015}
+--- !u!1 &2310576231479752254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8957228440229500414}
+  m_Layer: 0
+  m_Name: (R) Tangerine Follow Offset Hand_Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8957228440229500414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2310576231479752254}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0001017137, y: -0.01046248, z: -0.009720768, w: 0.9998981}
+  m_LocalPosition: {x: 0.035, y: -0.02, z: -0.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8587405756493149203}
+  m_LocalEulerAnglesHint: {x: 0, y: -1.199, z: -1.114}
 --- !u!1 &2324586624221748547
 GameObject:
   m_ObjectHideFlags: 0
@@ -8498,6 +8759,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2199209322470494773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3474347692215955197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7359904285624672986}
+  m_Layer: 0
+  m_Name: Controller Offset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7359904285624672986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3474347692215955197}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8587405756493149203}
+  - {fileID: 7212998414539441121}
+  m_Father: {fileID: 4108269490913295332}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3478161415263361444
 GameObject:
   m_ObjectHideFlags: 0
@@ -8685,6 +8979,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2788309764787497612}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3591385123401697279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7783597022843868187}
+  m_Layer: 0
+  m_Name: (L) Tangerine Follow Offset Hand_Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7783597022843868187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591385123401697279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00010171461, y: 0.010462574, z: 0.009720768, w: 0.9998981}
+  m_LocalPosition: {x: -0.035, y: -0.019, z: -0.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7212998414539441121}
+  m_LocalEulerAnglesHint: {x: 0, y: 1.199, z: 1.114}
 --- !u!1 &3628965995780257615
 GameObject:
   m_ObjectHideFlags: 0
@@ -12407,7 +12732,7 @@ Transform:
   m_GameObject: {fileID: 5432355893837960783}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 0.8, y: 0.80000013, z: 0.79999995}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12470,7 +12795,7 @@ MonoBehaviour:
   reachDistance: 0.15
   collisionPrecision: {x: 0.1, y: 0.1}
   enableMovement: 1
-  follow: {fileID: 5074554575403268475}
+  follow: {fileID: 7783597022843868187}
   throwPower: 1.25
   gentleGrabSpeed: 1
   advancedFollowSettings: 1
@@ -13652,6 +13977,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.025, y: 0.018, z: 0.015}
   m_Center: {x: -0.01, y: 0, z: 0.002}
+--- !u!1 &5541180327241559886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4367449018756588530}
+  m_Layer: 0
+  m_Name: (L) Tangerine Follow Offset Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4367449018756588530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541180327241559886}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.40048933, y: 0.005694538, z: 0.0047177966, w: 0.91627157}
+  m_LocalPosition: {x: -0.035, y: -0.019, z: 0.029999997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7212998414539441121}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5568836493124011288
 GameObject:
   m_ObjectHideFlags: 0
@@ -16816,6 +17172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7212998414539441121}
   - component: {fileID: 1342103816045310335}
+  - component: {fileID: 7167464284186020197}
   m_Layer: 0
   m_Name: Controller (left)
   m_TagString: GameController
@@ -16838,7 +17195,9 @@ Transform:
   m_Children:
   - {fileID: 5074554575403268475}
   - {fileID: 687339625609784980}
-  m_Father: {fileID: 4108269490913295332}
+  - {fileID: 4367449018756588530}
+  - {fileID: 7783597022843868187}
+  m_Father: {fileID: 7359904285624672986}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1342103816045310335
 MonoBehaviour:
@@ -16847,7 +17206,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6496443341750645053}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
   m_Name: 
@@ -16858,6 +17217,75 @@ MonoBehaviour:
   m_TrackingType: 0
   m_UpdateType: 0
   m_UseRelativeTransform: 0
+--- !u!114 &7167464284186020197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6496443341750645053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_IgnoreTrackingState: 1
+  m_PositionInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Position
+      m_Type: 0
+      m_ExpectedControlType: Vector3
+      m_Id: 9c68886a-d2aa-40a2-8e4d-6747952348e8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -2024308242397127297, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_RotationInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Rotation
+      m_Type: 0
+      m_ExpectedControlType: Quaternion
+      m_Id: bf9ea894-49d9-4ede-94b0-e9ded4c77acd
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 8248158260566104461, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_TrackingStateInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Tracking State
+      m_Type: 0
+      m_ExpectedControlType: Integer
+      m_Id: e359da03-2d00-41c2-88cc-5a4e1542de1e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 684395432459739428, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_PositionAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fb6563c6-e944-4cc5-935e-81ef6bc9b219
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_RotationAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7b30e8fd-d38b-41b4-a5cc-101b37c5ac92
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &6547504544278711763
 GameObject:
   m_ObjectHideFlags: 0
@@ -18985,6 +19413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8587405756493149203}
   - component: {fileID: 8695249011959774914}
+  - component: {fileID: 3012649992725230252}
   m_Layer: 0
   m_Name: Controller (right)
   m_TagString: GameController
@@ -19007,7 +19436,9 @@ Transform:
   m_Children:
   - {fileID: 6431419864276652046}
   - {fileID: 6512446191633725868}
-  m_Father: {fileID: 4108269490913295332}
+  - {fileID: 7006904124395166692}
+  - {fileID: 8957228440229500414}
+  m_Father: {fileID: 7359904285624672986}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &8695249011959774914
 MonoBehaviour:
@@ -19016,7 +19447,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8233262343551754805}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
   m_Name: 
@@ -19027,6 +19458,75 @@ MonoBehaviour:
   m_TrackingType: 0
   m_UpdateType: 0
   m_UseRelativeTransform: 0
+--- !u!114 &3012649992725230252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233262343551754805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_IgnoreTrackingState: 1
+  m_PositionInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Position
+      m_Type: 0
+      m_ExpectedControlType: Vector3
+      m_Id: 9c68886a-d2aa-40a2-8e4d-6747952348e8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -3326005586356538449, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_RotationInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Rotation
+      m_Type: 0
+      m_ExpectedControlType: Quaternion
+      m_Id: bf9ea894-49d9-4ede-94b0-e9ded4c77acd
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 5101698808175986029, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_TrackingStateInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Tracking State
+      m_Type: 0
+      m_ExpectedControlType: Integer
+      m_Id: e359da03-2d00-41c2-88cc-5a4e1542de1e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -1277054153949319361, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_PositionAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fb6563c6-e944-4cc5-935e-81ef6bc9b219
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_RotationAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7b30e8fd-d38b-41b4-a5cc-101b37c5ac92
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &8292849632357518959
 GameObject:
   m_ObjectHideFlags: 0
@@ -20255,7 +20755,7 @@ MonoBehaviour:
   handRight: {fileID: 2160333274616794404}
   handLeft: {fileID: 4594569984110460704}
   useMovement: 1
-  maxMoveSpeed: 2.3
+  maxMoveSpeed: 3
   moveAcceleration: 10000
   rotationType: 0
   snapTurnAngle: 30
@@ -20277,7 +20777,7 @@ MonoBehaviour:
   maxStepAngle: 45
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 32768
   groundedDrag: 10000
   flyingDrag: 4
   allowClimbing: 1
@@ -20496,3 +20996,34 @@ MonoBehaviour:
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
+--- !u!1 &9137799794877917806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7006904124395166692}
+  m_Layer: 0
+  m_Name: (R) Tangerine Follow Offset Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7006904124395166692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9137799794877917806}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.40049067, y: -0.005697161, z: -0.0047136247, w: 0.9162711}
+  m_LocalPosition: {x: 0.035000015, y: -0.020000005, z: 0.028000025}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8587405756493149203}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

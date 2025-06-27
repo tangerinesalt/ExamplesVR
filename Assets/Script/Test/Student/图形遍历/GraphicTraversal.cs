@@ -16,7 +16,6 @@ public class GraphicTraversal : MonoBehaviour
             {0, 0, 0, 0, 0}
         };
     private bool[,] visited;
-    private int minStepNumber = 0;
     void Start()
     {
         visited = new bool[grid.GetLength(0), grid.GetLength(1)];

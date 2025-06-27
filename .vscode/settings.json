@@ -54,5 +54,6 @@
     "dotnet.defaultSolution": "ExamplesVR.sln",
     "editor.minimap.autohide": false,
     "editor.minimap.maxColumn": 180,
-    "editor.minimap.sectionHeaderFontSize": 10
+    "editor.minimap.sectionHeaderFontSize": 10,
+    "FSharp.suggestGitignore": false
 }

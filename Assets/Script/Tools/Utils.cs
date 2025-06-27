@@ -20,11 +20,11 @@ namespace Voltage
         /// <param name="color"></param>
         /// <param name="log"></param>
         /// <returns></returns>
-        public static string DebugLog(Color color, string log)
+        public static string DebugLog(Color color, string log,Component component=null)
         {
             string hexColor = ColorUtility.ToHtmlStringRGBA(color);
             string str = $"<color=#{hexColor}>{log}</color>";
-            Debug.Log(str);
+            Debug.Log(str,component);
             return str;
         }
 

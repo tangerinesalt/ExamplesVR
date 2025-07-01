@@ -78,7 +78,7 @@ public class ObiRopePointToolsEditor : Editor
             serializedObject.ApplyModifiedProperties();
             // 标记指定的目标对象为已修改，确保其状态会被保存到场景文件或资源文件中
             EditorUtility.SetDirty(this.TargetObj);
-        }
+        }GUILayout.Space(6);
         if (GUILayout.Button("一键修改节点"))
         {
             if (rope == null)
@@ -92,16 +92,14 @@ public class ObiRopePointToolsEditor : Editor
             // 标记指定的目标对象为已修改，确保其状态会被保存到场景文件或资源文件中
             EditorUtility.SetDirty(this.TargetObj);
         }
-
-        GUILayout.Space(10);
         
         if (GUILayout.Button("清除所有控制点"))
         {
-            TargetObj.ClearControlPoint(rope);
+            TargetObj.RemoveControlPoint(rope, Voltage.ObiPointRemoveMode.All);
         }
         if (GUILayout.Button("清除所有中间点"))
         {
-            TargetObj.RemoveMiddleControlPoint(rope);
+            TargetObj.RemoveControlPoint(rope);
         }
 
         EditorGUILayout.EndVertical();

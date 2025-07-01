@@ -23,8 +23,8 @@ namespace Voltage
         {
             base.Awake();
 
-            if(m_grabbable == null) m_grabbable = GetGrabbable();
-            if(m_grabbable != null)
+            if (m_grabbable == null) m_grabbable = GetGrabbable();
+            if (m_grabbable != null)
             {
                 m_grabbable.OnBeforeGrabEvent += OnBeforeGrab;
                 m_grabbable.OnGrabEvent += OnGrab;
@@ -34,12 +34,20 @@ namespace Voltage
 
         public void OnBeforeGrab(Hand hand, Grabbable grab)
         {
-            if (m_particleAttachmentList.Count!=0)
+            if (m_particleAttachmentList.Count == 0)
+                return;
+
+            foreach (ObiParticleAttachment _particleAttachment in m_particleAttachmentList)
             {
-                ChangeAllObiAttachmentType(AttachmentType.Static);
+                if (_particleAttachment.target == transform)
+                    ChangeObiAttachmentType(_particleAttachment, AttachmentType.Static);
             }
+            // if (m_particleAttachmentList.Count != 0)
+            // {
+            //     ChangeAllObiAttachmentType(AttachmentType.Static);
+            // }
         }
-            
+
         public void OnGrab(Hand hand, Grabbable grab)
         {
 
@@ -47,11 +55,18 @@ namespace Voltage
 
         public void OnRelease(Hand hand, Grabbable grab)
         {
-            if (m_particleAttachmentList.Count!= 0)
-            {
-                ChangeAllObiAttachmentType(AttachmentType.Dynamic);
-            }
+            if (m_particleAttachmentList.Count == 0)
+                return;
 
+            foreach (ObiParticleAttachment _particleAttachment in m_particleAttachmentList)
+            {
+                if (_particleAttachment.target == transform)
+                    ChangeObiAttachmentType(_particleAttachment, AttachmentType.Dynamic);
+            }
+            // if (m_particleAttachmentList.Count != 0)
+            // {
+            //     ChangeAllObiAttachmentType(AttachmentType.Dynamic);
+            // }
         }
         private Grabbable GetGrabbable()
         {
@@ -65,11 +80,11 @@ namespace Voltage
         [ContextMenu("Add Particle Attachment For Brother")]
         public void AddParticleAttachmentForBrother()
         {
-            foreach(Transform brother in transform.parent)
+            foreach (Transform brother in transform.parent)
             {
-                if(brother.GetComponent<ObiControlBase>()!= null)
+                if (brother.GetComponent<ObiControlBase>() != null)
                 {
-                    brother.GetComponent<ObiControlBase>().AddParticleAttachmentInInspector(); 
+                    brother.GetComponent<ObiControlBase>().AddParticleAttachmentInInspector();
                 }
             }
         }

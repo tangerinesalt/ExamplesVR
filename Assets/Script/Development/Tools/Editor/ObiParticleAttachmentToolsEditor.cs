@@ -22,20 +22,27 @@ public class ObiParticleAttachmentToolsEditor : Editor
     private void DrawInspector()
     {
         ObiActor obiActor = TargetObj.GetComponent<ObiActor>();
-        EditorGUILayout.LabelField("全局参数", EditorStyles.boldLabel);
+
         EditorGUILayout.BeginVertical();
-        TargetObj.m_TargetObjectPrefab = (GameObject)EditorGUILayout.ObjectField("Target Object Prefab", TargetObj.m_TargetObjectPrefab, typeof(GameObject), true);
+
+        EditorGUILayout.LabelField("全局参数设置", EditorStyles.boldLabel);
         TargetObj.m_AttachmentType = (ObiParticleAttachment.AttachmentType)EditorGUILayout.EnumPopup("Attachment Type", TargetObj.m_AttachmentType);
+        EditorGUILayout.LabelField("附着对象设置", EditorStyles.boldLabel);
+        TargetObj.m_TargetObjectPrefab = (GameObject)EditorGUILayout.ObjectField("Target Object Prefab", TargetObj.m_TargetObjectPrefab, typeof(GameObject), true);
+        TargetObj.m_TargetObjectName = EditorGUILayout.TextField("Target Object Name", TargetObj.m_TargetObjectName);
 
         GUILayout.Space(10);
-        if (GUILayout.Button("设置粒子附着"))
+        if (GUILayout.Button("重置粒子附着组件"))
         {
-            TargetObj.SetparticleAttachment(obiActor);
+            TargetObj.AddParticleAttachmentComponent(obiActor);
         }
-        GUILayout.Space(6);
-        if (GUILayout.Button("销毁附着组件"))
+        if (GUILayout.Button("设置粒子附着目标"))
         {
-            TargetObj.DestoryAttachmentComponent(obiActor);
+            TargetObj.SetParticleAttachmentTarget(obiActor);
+        }
+        if (GUILayout.Button("清除粒子附着"))
+        {
+            TargetObj.ClearParticleAttachment(obiActor);
         }
 
         EditorGUILayout.EndVertical();

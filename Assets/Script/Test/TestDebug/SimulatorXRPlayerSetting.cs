@@ -46,7 +46,7 @@ public class SimulatorXRPlayerSetting : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Device is not founD.");
+            Debug.Log($"Device is not found.");
             m_cameraOffset.position = new Vector3(0, m_cameraHeight, 0);
             m_controllerOffset.position = new Vector3(0, m_controllerHeight, 0);
         }

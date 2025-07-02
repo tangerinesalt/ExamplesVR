@@ -9,9 +9,11 @@ using Voltage;
 public class ObiParticleAttachmentToolsEditor : Editor
 {
     private ObiParticleAttachmentTools TargetObj;
+    private SerializedProperty m_TargetObjectsProp;
     void OnEnable()
     {
         TargetObj = (ObiParticleAttachmentTools)this.target;
+        m_TargetObjectsProp = serializedObject.FindProperty("m_TargetObjects");
     }
     public override void OnInspectorGUI()
     {
@@ -30,6 +32,10 @@ public class ObiParticleAttachmentToolsEditor : Editor
         EditorGUILayout.LabelField("附着对象设置", EditorStyles.boldLabel);
         TargetObj.m_TargetObjectPrefab = (GameObject)EditorGUILayout.ObjectField("Target Object Prefab", TargetObj.m_TargetObjectPrefab, typeof(GameObject), true);
         TargetObj.m_TargetObjectName = EditorGUILayout.TextField("Target Object Name", TargetObj.m_TargetObjectName);
+
+        serializedObject.Update();
+        EditorGUILayout.PropertyField(m_TargetObjectsProp, new GUIContent("Target Objects"), true);
+        serializedObject.ApplyModifiedProperties();
 
         GUILayout.Space(10);
         if (GUILayout.Button("重置粒子附着组件"))

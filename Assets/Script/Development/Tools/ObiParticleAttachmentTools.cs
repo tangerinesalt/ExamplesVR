@@ -24,10 +24,10 @@ public class ObiParticleAttachmentTools : MonoBehaviour
     public GameObject m_TargetObjectPrefab;
     public ObiParticleAttachment.AttachmentType m_AttachmentType = ObiParticleAttachment.AttachmentType.Static;
     public string m_TargetObjectName = "AttachmentObject";
+    public List<GameObject> m_TargetObjects = new List<GameObject>();
 
     // 内部变量
     private GameObject m_targetParent = null;
-    private Dictionary<int, GameObject> m_TargetObjects = new Dictionary<int, GameObject>();
     private Dictionary<int, ObiParticleAttachment> m_AttachmentComponents = new Dictionary<int, ObiParticleAttachment>();
 
     [InitializeOnLoadMethod]
@@ -110,7 +110,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
                     go.name = $"{m_TargetObjectName}_{blueprint.groups[i].name}";
                     SetAttachmentTargetPosition(go, blueprint, i);
                     CheckAttachmentTargetComponent(go);
-                    m_TargetObjects.Add(i, go);
+                    m_TargetObjects.Add(go);
                     attach.target = go.transform;
                 }
 
@@ -183,7 +183,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
         if (m_TargetObjects.Count > 0)
         {
             Utils.DebugLog(Color.green, $"销毁:{name}_所有附着对象");
-            foreach (var targetObject in m_TargetObjects.Values)
+            foreach (var targetObject in m_TargetObjects)
             {
                 if (Application.isPlaying)
                     Destroy(targetObject);

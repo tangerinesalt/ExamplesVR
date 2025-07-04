@@ -27,11 +27,11 @@ namespace Voltage
             root = GameObject.Find("Root");
             if (root == null)
             {
-                Utils.DebugLog(Color.red, "Root节点不存在！");
+                UtilsVoltage.DebugLog(Color.red, "Root节点不存在！");
             }
             else
             {
-                Utils.DebugLog(Color.green, "初始化根节点！");
+                UtilsVoltage.DebugLog(Color.green, "初始化根节点！");
                 DontDestroyOnLoad(root);
 
                 GOManager.Instance.Init();
@@ -54,8 +54,8 @@ namespace Voltage
 
         protected virtual void OnApplicationQuit()
         {
-            Utils.DebugLog(Color.green, "游戏结束！");
-            Utils.Unload_Collect();
+            UtilsVoltage.DebugLog(Color.green, "游戏结束！");
+            UtilsVoltage.Unload_Collect();
         }
     }
 }

@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace Voltage
 {
-    public static class Utils
+    public static class UtilsVoltage
     {
         /// <summary>
         /// 打印颜色日志

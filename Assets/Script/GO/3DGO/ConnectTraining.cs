@@ -6,7 +6,7 @@ namespace Voltage
     {
         private void Start()
         {
-            var socket = Utils.FindChildInTransform(transform, "socket")?.GetComponent<SocketBase>();
+            var socket = UtilsVoltage.FindChildInTransform(transform, "socket")?.GetComponent<SocketBase>();
             if (socket != null)
             {
                 socket.m_afterConnection.AddListener(CompleteTraining);
@@ -19,7 +19,7 @@ namespace Voltage
 
         protected void CompleteTraining()
         {
-            Utils.DebugLog(Color.green, "连接训练完成");
+            UtilsVoltage.DebugLog(Color.green, "连接训练完成");
         }
     }
 }

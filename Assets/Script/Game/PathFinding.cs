@@ -202,7 +202,7 @@ namespace Voltage
         #region 路径处理
         private void CheckNavigationCompletion()
         {
-            if (Utils.CalculatePathLength(CurrentPath) <= pathSettings.endDistance)
+            if (UtilsVoltage.CalculatePathLength(CurrentPath) <= pathSettings.endDistance)
             {
                 ToggleNavigation(false);
                 _currentTarget?.gameObject.SetActive(false);
@@ -230,13 +230,13 @@ namespace Voltage
             _smoothedPath.Clear();
             if (simplifiedPath.Count < 2) return;
 
-            Vector3[] controlPoints = Utils.GenerateCatmullRomControlPoints(simplifiedPath.ToArray());
+            Vector3[] controlPoints = UtilsVoltage.GenerateCatmullRomControlPoints(simplifiedPath.ToArray());
             int totalPoints = (simplifiedPath.Count - 1) * pathSettings.smoothSegments;
 
             for (int i = 0; i <= totalPoints; i++)
             {
                 float t = (float)i / totalPoints;
-                _smoothedPath.Add(Utils.InterpolateCatmullRom(controlPoints, t));
+                _smoothedPath.Add(UtilsVoltage.InterpolateCatmullRom(controlPoints, t));
             }
         }
         #endregion

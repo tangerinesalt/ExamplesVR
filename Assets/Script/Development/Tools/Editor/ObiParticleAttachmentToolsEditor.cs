@@ -46,7 +46,7 @@ public class ObiParticleAttachmentToolsEditor : Editor
         {
             TargetObj.SetParticleAttachmentTarget(obiActor);
         }
-        if (GUILayout.Button("清除粒子附着"))
+        if (GUILayout.Button("清除粒子附着(组件和预制体)"))
         {
             TargetObj.ClearParticleAttachment(obiActor);
         }

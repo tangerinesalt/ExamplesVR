@@ -83,7 +83,7 @@ namespace Voltage
         private void SceneManager_activeSceneChanged(Scene arg0, Scene arg1)
         {
             Debug.Log($"********{arg0.name}切换到场景：{arg1.name}********");
-            Utils.Unload_Collect();
+            UtilsVoltage.Unload_Collect();
 
             switch (arg1.name)
             {

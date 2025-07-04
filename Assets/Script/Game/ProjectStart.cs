@@ -22,7 +22,7 @@ namespace Voltage
         {
             base.Start();
 
-            Utils.DebugLog(Color.green, "项目启动");
+            UtilsVoltage.DebugLog(Color.green, "项目启动");
             
             SceneServiceManager.Instance.LoadScene(GlobalDataManager.Instance.menuScene);
         }

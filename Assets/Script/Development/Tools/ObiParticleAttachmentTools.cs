@@ -27,7 +27,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
     public List<GameObject> m_TargetObjects = new List<GameObject>();
 
     // 内部变量
-    private GameObject m_targetParent = null;
+    public GameObject m_targetParent = null;
     private Dictionary<int, ObiParticleAttachment> m_AttachmentComponents = new Dictionary<int, ObiParticleAttachment>();
 
     [InitializeOnLoadMethod]
@@ -61,7 +61,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
         DestroyAttachmentTargetObjects();
 
         //添加并修改附着组件
-        Utils.DebugLog(Color.green, $"{blueprint.name}中共有{blueprint.groups.Count}个粒子组。", this);
+        UtilsVoltage.DebugLog(Color.green, $"{blueprint.name}中共有{blueprint.groups.Count}个粒子组。",this);
         CheckAttachmentComponent(obiActor);
         // for (int i = 0; i < blueprint.groups.Count; i++)
         // {
@@ -71,7 +71,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
         //     attachmentComponent.attachmentType = m_AttachmentType;
         //     if (!m_AttachmentComponents.ContainsKey(i))
         //         m_AttachmentComponents.Add(i, attachmentComponent);
-        //     Utils.DebugLog(Color.green, $"粒子组: {blueprint.groups[i].name}({i}), 已创建附着组件");
+        //     UtilsVoltage.DebugLog(Color.green, $"粒子组: {blueprint.groups[i].name}({i}), 已创建附着组件");
         // }
     }
     /// <summary>
@@ -98,6 +98,11 @@ public class ObiParticleAttachmentTools : MonoBehaviour
             {
                 if (attach.target == null)
                 {
+                    if (m_TargetObjectPrefab == null)
+                    {
+                        UtilsVoltage.DebugLog(Color.red, $"请先设置附着对象预制体", this);
+                        return;
+                    }
                     // 创建附着对象父级
                     if (m_TargetObjectPrefab != null && m_targetParent == null)
                     {
@@ -164,7 +169,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
         ObiParticleAttachment[] attachments = obiActor.gameObject.GetComponents<ObiParticleAttachment>();
         if (attachments.Length != 0)
         {
-            Utils.DebugLog(Color.green, $"销毁:{name}_所有附着组件", this);
+            UtilsVoltage.DebugLog(Color.green, $"销毁:{name}_所有附着组件", this);
             foreach (var attachment in attachments)
             {
                 if (Application.isPlaying)
@@ -182,7 +187,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
         //销毁附着对象
         if (m_TargetObjects.Count > 0)
         {
-            Utils.DebugLog(Color.green, $"销毁:{name}_所有附着对象");
+            UtilsVoltage.DebugLog(Color.green, $"销毁:{name}_所有附着对象");
             foreach (var targetObject in m_TargetObjects)
             {
                 if (Application.isPlaying)
@@ -195,7 +200,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
         //销毁附着对象的父级
         if (m_targetParent != null)
         {
-            Utils.DebugLog(Color.green, $"销毁:{name}_默认附着父对象");
+            UtilsVoltage.DebugLog(Color.green, $"销毁:{name}_默认附着父对象");
             if (Application.isPlaying)
                 Destroy(m_targetParent);
             else
@@ -213,7 +218,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
             }
 
             ObiWingedPoint ropePointdata = ropeBlueprint.path.points.data[index];
-            Utils.DebugLog(Color.green, $"设置附着对象:{go.name} localPosition:{ropePointdata.position}", go.transform);
+            UtilsVoltage.DebugLog(Color.green, $"设置附着对象:{go.name} localPosition:{ropePointdata.position}", go.transform);
             go.transform.localPosition = ropePointdata.position;
         }
     }
@@ -257,7 +262,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
                 {
                     if (attachment.particleGroup == blueprint.groups[i])
                     {
-                        Utils.DebugLog(Color.green, $"粒子组: {blueprint.groups[i].name}({i}), 已找到附着组件");
+                        UtilsVoltage.DebugLog(Color.green, $"粒子组: {blueprint.groups[i].name}({i}), 已找到附着组件");
                         m_AttachmentComponents.Add(i, attachment);
                         AttachmentFilled[i] = true;
                         break;
@@ -272,7 +277,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
                 attachmentComponent.attachmentType = m_AttachmentType;
                 if (!m_AttachmentComponents.ContainsKey(i))
                     m_AttachmentComponents.Add(i, attachmentComponent);
-                Utils.DebugLog(Color.green, $"粒子组: {blueprint.groups[i].name}({i}), 已创建附着组件");
+                UtilsVoltage.DebugLog(Color.green, $"粒子组: {blueprint.groups[i].name}({i}), 已创建附着组件");
             }
         }
         //销毁多余的附着组件

@@ -51,7 +51,8 @@ public class ObiRopePointToolsEditor : Editor
 
         EditorGUILayout.EndVertical();
     }
-
+    
+    #region 蓝图编辑方法
     /// <summary> 蓝图编辑方法 </summary>
     private bool BlueprintEditingMethod(ObiRopeBase rope)
     {
@@ -72,6 +73,7 @@ public class ObiRopePointToolsEditor : Editor
             GUILayout.Space(6);
             if (GUILayout.Button("一键修改蓝图"))
             {
+                Undo.RecordObject(rope.sourceBlueprint, "Modify blueprint");
                 TargetObj.ModifyBlueprint(rope);
                 // 通过序列化属性所做的修改应用到目标对象上，并触发Unity内部的更新机制
                 serializedObject.ApplyModifiedProperties();
@@ -84,7 +86,9 @@ public class ObiRopePointToolsEditor : Editor
 
         return true;
     }
+    #endregion
 
+    #region 节点生成方法
     /// <summary> 节点生成方法 </summary>
     private bool RopePointGeneratingMethod(ObiRopeBase rope)
     {
@@ -115,17 +119,26 @@ public class ObiRopePointToolsEditor : Editor
             if (GUILayout.Button("清除所有控制点"))
             {
                 TargetObj.RemoveControlPoint(rope, Voltage.ObiPointRemoveMode.All);
+                // 通过序列化属性所做的修改应用到目标对象上，并触发Unity内部的更新机制
+                serializedObject.ApplyModifiedProperties();
+                // 标记指定的目标对象为已修改，确保其状态会被保存到场景文件或资源文件中
+                EditorUtility.SetDirty(this.TargetObj);
             }
             if (GUILayout.Button("清除所有中间点"))
             {
                 TargetObj.RemoveControlPoint(rope);
+                // 通过序列化属性所做的修改应用到目标对象上，并触发Unity内部的更新机制
+                serializedObject.ApplyModifiedProperties();
+                // 标记指定的目标对象为已修改，确保其状态会被保存到场景文件或资源文件中
+                EditorUtility.SetDirty(this.TargetObj);
             }
             EditorGUILayout.EndVertical();
         }
 
         return true;
     }
-
+    #endregion
+    #region 节点修改方法
     private bool RopePointModifyingMethod(ObiRopeBase rope)
     {
         showRopePointModifying = EditorGUILayout.Foldout(showRopePointModifying, "节点修改", true, EditorStyles.boldLabel);
@@ -185,18 +198,26 @@ public class ObiRopePointToolsEditor : Editor
             // {
             //     TargetObj.GetIndexOfSelectPoint(rope, TargetObj.m_startGroup, TargetObj.m_endGroup, out int startIndex, out int endIndex);
             // }
-            
+
             // 节点修改方法
             GUILayout.Space(6);
             EditorGUILayout.LabelField("增加节点", EditorStyles.label);
             TargetObj.m_middlePointCount = EditorGUILayout.IntField("Middle Point Count", TargetObj.m_middlePointCount);
             if (GUILayout.Button("增加中间节点"))
             {
-                TargetObj.AddMiddleControlPoint(rope,TargetObj.m_middlePointCount);
+                TargetObj.AddMiddleControlPoint(rope, TargetObj.m_middlePointCount);
+                // 通过序列化属性所做的修改应用到目标对象上，并触发Unity内部的更新机制
+                serializedObject.ApplyModifiedProperties();
+                // 标记指定的目标对象为已修改，确保其状态会被保存到场景文件或资源文件中
+                EditorUtility.SetDirty(this.TargetObj);
             }
             if (GUILayout.Button("删除中间节点"))
             {
                 TargetObj.RemoveMiddleControlPoint(rope);
+                // 通过序列化属性所做的修改应用到目标对象上，并触发Unity内部的更新机制
+                serializedObject.ApplyModifiedProperties();
+                // 标记指定的目标对象为已修改，确保其状态会被保存到场景文件或资源文件中
+                EditorUtility.SetDirty(this.TargetObj);
             }
 
             GUILayout.Space(6);
@@ -204,7 +225,12 @@ public class ObiRopePointToolsEditor : Editor
             TargetObj.m_pointOffset = EditorGUILayout.FloatField("Point Offset", TargetObj.m_pointOffset);
             if (GUILayout.Button("偏移节点"))
             {
+                Undo.RecordObject(rope.sourceBlueprint, "Offset control point");
                 TargetObj.OffsetControlPoint(rope);
+                // 通过序列化属性所做的修改应用到目标对象上，并触发Unity内部的更新机制
+                serializedObject.ApplyModifiedProperties();
+                // 标记指定的目标对象为已修改，确保其状态会被保存到场景文件或资源文件中
+                EditorUtility.SetDirty(this.TargetObj);
             }
 
             EditorGUILayout.EndVertical();
@@ -232,5 +258,6 @@ public class ObiRopePointToolsEditor : Editor
         TargetObj.m_endGroup = index as ObiParticleGroup;
         PrefabUtility.RecordPrefabInstancePropertyModifications(TargetObj);
     }
+    #endregion
 
 }

@@ -169,7 +169,8 @@ namespace Voltage
             }
             // 4.重置始末点的切线
             SetRopeLength(rope);
-            
+
+            // 其他设置
             InitIntervalSize = IntervalSize;
         }
 
@@ -196,7 +197,6 @@ namespace Voltage
             SetControlPointProperty(rope, StartIndex);
             SetControlPointProperty(rope, EndIndex);
         }
-
         #endregion
 
         #region 节点修改
@@ -208,8 +208,8 @@ namespace Voltage
                 return;
             }
             //获取修改的起始和终止节点的索引
-            GetIndexOfSelectPoint(rope, m_startGroup, m_endGroup, out int start, out int end);
-            if(InitIntervalSize == 0) InitIntervalSize = IntervalSize;
+            if (!GetIndexOfSelectPoint(rope, m_startGroup, m_endGroup, out int start, out int end)) return;
+            if (InitIntervalSize == 0) InitIntervalSize = IntervalSize;
             // UtilsVoltage.DebugLog(Color.yellow, $"初始化长度为{InitIntervalSize} ");
 
             //移除中间节点
@@ -238,18 +238,18 @@ namespace Voltage
             //刷新路径事件（必须调用以更新绳索状态）
             rope.path.FlushEvents();
             //重设位置和切线
-            
+
             Vector3 startPos = rope.path.points.data[start].position;
             Vector3 endPos = rope.path.points.data[start + m_middlePointCount + 1].position;
             float SelectedLength = Mathf.Abs(startPos.x - endPos.x);
             float SelectedInterval = SelectedLength / (m_middlePointCount + 1);
-            float MiniatureSelectedInterval = SelectedInterval / m_middlePointCount+1;
+            float MiniatureSelectedInterval = SelectedInterval / m_middlePointCount + 1;
             // UtilsVoltage.DebugLog(Color.yellow, $"开始点为{start}, 终止点为{end}, 选中长度为{SelectedLength}, 选中间隔为{SelectedInterval}, 小间隔为{MiniatureSelectedInterval} ");
             Vector3 SelectedInTangent = new Vector3(-Mathf.Min(SelectedInterval * 0.5f, 0.25f), 0, 0);
             Vector3 SelectedOutTangent = new Vector3(Mathf.Min(SelectedInterval * 0.5f, 0.25f), 0, 0);
             // 重新设置节点位置和切线,全部靠近一侧后重新设置点位,以避免切线被挤压
             // 靠右侧设置增设节点位置
-            int d=0;
+            int d = 0;
             for (int i = start + m_middlePointCount; i > start; --i)
             {
                 d++;
@@ -266,6 +266,7 @@ namespace Voltage
             //重置节点名和属性
             ResetNodeproperties(rope, 1, rope.path.ControlPointCount - 1);
         }
+
         public bool RemoveMiddleControlPoint(ObiRopeBase rope)
         {
             if (RopeVerify(rope) == false)
@@ -274,7 +275,7 @@ namespace Voltage
                 return false;
             }
             //获取修改的起始和终止节点的索引
-            GetIndexOfSelectPoint(rope, m_startGroup, m_endGroup, out int start, out int end);
+            if (!GetIndexOfSelectPoint(rope, m_startGroup, m_endGroup, out int start, out int end)) return false;
 
             //移除中间节点
             if (start + 1 < end - 1)
@@ -298,7 +299,7 @@ namespace Voltage
             }
             else if (start + 1 == end)
             {
-                Debug.Log("中间无节点");
+                Debug.Log("移除节点中间节点：中间无节点");
             }
             return true;
         }
@@ -310,27 +311,84 @@ namespace Voltage
                 Debug.LogError("未找到正确的Rope相关资源, 退出方法体...");
                 return;
             }
-            //获取修改的起始和终止节点的索引
-            GetIndexOfSelectPoint(rope, m_startGroup, m_endGroup, out int start, out int end);
+            if (m_pointOffset == 0)
+            {
+                UtilsVoltage.DebugLog(Color.yellow, $"偏移值为0, 无偏移操作");
+                return;
+            }
+
+            // 获取修改的起始和终止节点的索引
+            if (!GetIndexOfSelectPoint(rope, m_startGroup, m_endGroup, out int start, out int end)) return;
+
+            // 偏移危险行为判断
+            if (m_pointOffset > 0 && end != rope.path.ControlPointCount - 1)
+            {
+                //偏移后超过右侧点的位置
+                if (rope.path.points.data[end].position.x + m_pointOffset >= rope.path.points.data[end + 1].position.x)
+                {
+                    Debug.LogError("移动后可能超过后一节点位置, 无法安全偏移");
+                    return;
+                }
+            }
+            else if (m_pointOffset < 0 && start != 0)
+            {
+                //偏移后超过左侧点的位置
+                if (rope.path.points.data[start].position.x + m_pointOffset <= rope.path.points.data[start - 1].position.x)
+                {
+                    Debug.LogError("移动后可能超过前一节点位置, 无法安全偏移");
+                    return;
+                }
+            }
+
+            UtilsVoltage.DebugLog(Color.yellow, $"开始节点为{start}, 终止节点为{end}, 偏移值为{m_pointOffset} ");
+            // 根据偏移数值判断首先移动的节点
+            if (m_pointOffset > 0)
+            {
+                //右侧首先移动
+                for (int i = end; i >= start; --i)
+                {
+                    Vector3 oldPos = rope.path.points.data[i].position;
+                    Vector3 inTangent = rope.path.points.data[i].inTangent;
+                    Vector3 outTangent = rope.path.points.data[i].outTangent;
+                    rope.path.points.data[i] = new ObiWingedPoint(inTangent, new Vector3(oldPos.x + m_pointOffset, 0, 0), outTangent);
+                }
+                UtilsVoltage.DebugLog(Color.yellow, $"选中节点组移动{m_pointOffset} 完成");
+            }
+            else
+            {
+                //判断出界
+                //左侧首先移动
+                for (int i = start; i <= end; ++i)
+                {
+                    Vector3 oldPos = rope.path.points.data[i].position;
+                    Vector3 inTangent = rope.path.points.data[i].inTangent;
+                    Vector3 outTangent = rope.path.points.data[i].outTangent;
+                    rope.path.points.data[i] = new ObiWingedPoint(inTangent, new Vector3(oldPos.x + m_pointOffset, 0, 0), outTangent);
+                }
+                UtilsVoltage.DebugLog(Color.yellow, $"选中节点组移动{m_pointOffset} 完成");
+            }
+            // 刷新路径事件（必须调用以更新绳索状态）
+            rope.path.FlushEvents();
         }
+
         /// <summary>
         /// 根据选择的起始和终止节点,获取其索引并排序
         /// </summary>
         /// <param name="rope"></param>
         /// <param name="startIndex"></param>
         /// <param name="endIndex"></param>
-        public void GetIndexOfSelectPoint(ObiRopeBase rope, ObiParticleGroup startParticleGroup, ObiParticleGroup endParticleGroup, out int startIndex, out int endIndex)
+        public bool GetIndexOfSelectPoint(ObiRopeBase rope, ObiParticleGroup startParticleGroup, ObiParticleGroup endParticleGroup, out int startIndex, out int endIndex)
         {
             startIndex = -1; endIndex = -1;
             if (m_startGroup == null || m_endGroup == null)
             {
                 Debug.LogError("未选择起始或终止节点");
-                return;
+                return false;
             }
             if (m_startGroup == m_endGroup)
             {
                 Debug.LogError("起始节点和终止节点不能相同");
-                return;
+                return false;
             }
 
             GetIndexOfParticleGroup(rope, m_startGroup, ref startIndex);
@@ -343,11 +401,12 @@ namespace Voltage
                 endIndex = temp;
             }
 
+            return true;
+
             // UtilsVoltage.DebugLog(Color.green, $"已找到起始点索引 ({startIndex}) 和终止点索引 ({endIndex}) ");
         }
-        /// <summary>
-        /// 根据ParticleGroup获取其索引
-        /// </summary>
+
+        /// <summary>  根据ParticleGroup获取其索引 </summary>
         private void GetIndexOfParticleGroup(ObiRopeBase rope, ObiParticleGroup group, ref int index)
         {
             var blueprint = rope.sourceBlueprint;
@@ -365,8 +424,6 @@ namespace Voltage
                 Debug.LogError($"未在{rope.sourceBlueprint.name}_中找到{group.name}");
             }
         }
-
-
         #endregion
 
         #region 工具方法
@@ -503,7 +560,7 @@ namespace Voltage
                 return -1;
             }
 
-            float indexRatio = (index + 1.0f) /pointCount;
+            float indexRatio = (index + 1.0f) / pointCount;
             indexRatio = (float)System.Math.Round(indexRatio, 6);//保留小数点后6位
             // Debug.Log($"当节点索引为{index}, 节点总数为{pointCount}时, 节点索引比例: {indexRatio}");
             return indexRatio;

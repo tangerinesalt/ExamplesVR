@@ -27,7 +27,8 @@ public class ObiParticleAttachmentTools : MonoBehaviour
     public List<GameObject> m_TargetObjects = new List<GameObject>();
 
     // 内部变量
-    public GameObject m_targetParent = null;
+    public
+     GameObject m_targetParent = null;
     private Dictionary<int, ObiParticleAttachment> m_AttachmentComponents = new Dictionary<int, ObiParticleAttachment>();
 
     [InitializeOnLoadMethod]

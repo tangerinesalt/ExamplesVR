@@ -865,6 +865,7 @@ MonoBehaviour:
   horizontalSensitivity: 4
   isAllowOpenAll: 0
   isAllowCloseAll: 0
+  checkOnRelease: 1
   onOpenAll:
     m_PersistentCalls:
       m_Calls: []
@@ -1120,6 +1121,7 @@ MonoBehaviour:
   horizontalSensitivity: 4
   isAllowOpenAll: 0
   isAllowCloseAll: 0
+  checkOnRelease: 1
   onOpenAll:
     m_PersistentCalls:
       m_Calls: []
@@ -1270,7 +1272,7 @@ MonoBehaviour:
   jointedBodies: []
   heldIgnoreColliders: []
   pullApartBreakOnly: 1
-  showEvents: 1
+  showEvents: 0
   onGrab:
     m_PersistentCalls:
       m_Calls: []
@@ -1457,6 +1459,7 @@ MonoBehaviour:
   horizontalSensitivity: 5
   isAllowOpenAll: 0
   isAllowCloseAll: 0
+  checkOnRelease: 1
   onOpenAll:
     m_PersistentCalls:
       m_Calls: []
@@ -2336,6 +2339,7 @@ MonoBehaviour:
   horizontalSensitivity: 5
   isAllowOpenAll: 0
   isAllowCloseAll: 0
+  checkOnRelease: 1
   onOpenAll:
     m_PersistentCalls:
       m_Calls: []

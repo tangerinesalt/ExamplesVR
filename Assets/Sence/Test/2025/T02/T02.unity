@@ -658,7 +658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &486315145
 Transform:
   m_ObjectHideFlags: 0
@@ -734,61 +734,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solverIndices:
-    serializedContents: 0b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f000000300000003100000032000000330000003400000035000000360000003700000038000000390000003a0000003b0000003c0000003d0000003e0000003f000000400000004100000042000000430000004400000045000000460000004700000048000000490000004a0000004b0000004c0000004d0000004e0000004f000000500000005100000052000000530000005400000055000000560000005700000058000000590000005a0000005b0000005c0000005d0000005e0000005f000000600000006100000062000000630000006400000065000000660000006700000068000000690000006a0000006b0000006c0000006d0000006e0000006f00000070000000710000007200000073000000740000007500000076000000770000007800000079000000
+    serializedContents: 
     m_AlignBytes: 16
-  groupID: 2
+  groupID: 1
   m_CollisionMaterial: {fileID: 0}
   m_SurfaceCollisions: 0
   m_SelfCollisions: 0
   restLength_: 0.95599985
   elements:
-  - particle1: 11
-    particle2: 12
+  - particle1: 0
+    particle2: 1
     restLength: 0.09533507
     constraintForce: 0
     tearResistance: 1
-  - particle1: 12
-    particle2: 13
+  - particle1: 1
+    particle2: 2
     restLength: 0.09567976
     constraintForce: 0
     tearResistance: 1
-  - particle1: 13
-    particle2: 14
+  - particle1: 2
+    particle2: 3
     restLength: 0.095666245
     constraintForce: 0
     tearResistance: 1
-  - particle1: 14
-    particle2: 15
+  - particle1: 3
+    particle2: 4
     restLength: 0.095655754
     constraintForce: 0
     tearResistance: 1
-  - particle1: 15
-    particle2: 16
+  - particle1: 4
+    particle2: 5
     restLength: 0.09566316
     constraintForce: 0
     tearResistance: 1
-  - particle1: 16
-    particle2: 17
+  - particle1: 5
+    particle2: 6
     restLength: 0.095663145
     constraintForce: 0
     tearResistance: 1
-  - particle1: 17
-    particle2: 18
+  - particle1: 6
+    particle2: 7
     restLength: 0.09565571
     constraintForce: 0
     tearResistance: 1
-  - particle1: 18
-    particle2: 19
+  - particle1: 7
+    particle2: 8
     restLength: 0.095666245
     constraintForce: 0
     tearResistance: 1
-  - particle1: 19
-    particle2: 20
+  - particle1: 8
+    particle2: 9
     restLength: 0.09567985
     constraintForce: 0
     tearResistance: 1
-  - particle1: 20
-    particle2: 21
+  - particle1: 9
+    particle2: 10
     restLength: 0.09533504
     constraintForce: 0
     tearResistance: 1
@@ -2817,7 +2817,7 @@ Transform:
   - {fileID: 1695164739}
   m_Father: {fileID: 991677987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1640420905
+--- !u!1 &1382728013
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2825,8 +2825,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1640420907}
-  - component: {fileID: 1640420906}
+  - component: {fileID: 1382728015}
+  - component: {fileID: 1382728014}
   m_Layer: 0
   m_Name: BurstCollisionWorld
   m_TagString: Untagged
@@ -2834,13 +2834,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1640420906
+--- !u!114 &1382728014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640420905}
+  m_GameObject: {fileID: 1382728013}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1a161c4294214a4fbcb7e9e94800494, type: 3}
@@ -2848,13 +2848,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellSpans:
     m_AlignBytes: 16
---- !u!4 &1640420907
+--- !u!4 &1382728015
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640420905}
+  m_GameObject: {fileID: 1382728013}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -3249,7 +3249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1794635570
 Transform:
   m_ObjectHideFlags: 0
@@ -3370,7 +3370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solverIndices:
-    serializedContents: 
+    serializedContents: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
     m_AlignBytes: 16
   groupID: 1
   m_CollisionMaterial: {fileID: 0}
@@ -3459,7 +3459,7 @@ MonoBehaviour:
   m_Actor: {fileID: 1794635575}
   m_Target: {fileID: 2141655106}
   m_ParticleGroup: {fileID: 5104502458043606138, guid: 5ae503f8571176d45b6b36740d73f175, type: 2}
-  m_AttachmentType: 0
+  m_AttachmentType: 1
   m_ConstrainOrientation: 0
   m_Compliance: 0
   m_BreakThreshold: Infinity
@@ -3848,6 +3848,8 @@ GameObject:
   - component: {fileID: 2141655109}
   - component: {fileID: 2141655108}
   - component: {fileID: 2141655107}
+  - component: {fileID: 2141655111}
+  - component: {fileID: 2141655112}
   m_Layer: 0
   m_Name: TailCube
   m_TagString: Untagged
@@ -3959,6 +3961,46 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141655105}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &2141655111
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141655105}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2141655112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141655105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62359d80fdc0e4315ab6331b78ec5b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kinematicForParticles: 0
 --- !u!1001 &864056903984620909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4024,4 +4066,4 @@ SceneRoots:
   - {fileID: 864056903984620909}
   - {fileID: 991677987}
   - {fileID: 1844479284}
-  - {fileID: 1640420907}
+  - {fileID: 1382728015}

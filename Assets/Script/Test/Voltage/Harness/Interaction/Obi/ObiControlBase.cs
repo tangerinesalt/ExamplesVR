@@ -25,7 +25,7 @@ namespace Voltage
         private Transform m_attachmentTarget;
 
         [SerializeField, Tooltip("Object containing component ObiParticleAttachment")]
-        public  List<ObiRope> m_particleAttachmentTransforms = null;
+        public  List<ObiActor> m_particleAttachmentTransforms = null;
 
         [SerializeField, Tooltip("Click the button below to get")]
         public List<ObiParticleAttachment> m_particleAttachmentList = null;

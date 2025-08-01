@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.justinpbarnett.unity-mcp": {
+      "version": "https://github.com/justinpbarnett/unity-mcp.git?path=/UnityMcpBridge",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2"
+      },
+      "hash": "00765c527704a1cb81c07d0e26f5aae65fb48b51"
+    },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
       "depth": 0,
@@ -113,6 +122,13 @@
     },
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.4",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.cn"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},

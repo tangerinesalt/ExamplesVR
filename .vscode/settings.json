@@ -52,8 +52,11 @@
         "Temp/": true
     },
     "dotnet.defaultSolution": "ExamplesVR.sln",
-    "editor.minimap.autohide": false,
+    "editor.minimap.autohide": "none",
     "editor.minimap.maxColumn": 180,
     "editor.minimap.sectionHeaderFontSize": 10,
-    "FSharp.suggestGitignore": false
+    "FSharp.suggestGitignore": false,
+    "editor.minimap.enabled": true,
+    "trae.tab.enableRename": false,
+    "trae.tab.enableAutoImport": false
 }

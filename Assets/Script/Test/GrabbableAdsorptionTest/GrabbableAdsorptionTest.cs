@@ -88,6 +88,8 @@ public class GrabbableAdsorptionTest : MonoBehaviour
             rb.isKinematic = true;
             rb.Sleep();
             rb.MovePosition(target.position);
+            rb.transform.position = target.position;
+            rb.transform.rotation = target.rotation;
             Debug.Log($"到达目标点".FontColoring(Color.green));
         }
         goTargetCoroutine = null;

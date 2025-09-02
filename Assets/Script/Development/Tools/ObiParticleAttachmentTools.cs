@@ -9,7 +9,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Obi;
 using UnityEngine;
-using UnityEditor;
 using Voltage;
 using System.Linq;
 using UnityEditor.Events;
@@ -31,7 +30,7 @@ public class ObiParticleAttachmentTools : MonoBehaviour
      GameObject m_targetParent = null;
     private Dictionary<int, ObiParticleAttachment> m_AttachmentComponents = new Dictionary<int, ObiParticleAttachment>();
 
-    [InitializeOnLoadMethod]
+    
     static void onEnableOrCompile()
     {
         // 这里可以添加您希望在脚本编译或修改后执行的逻辑

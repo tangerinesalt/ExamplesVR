@@ -1,11 +1,4 @@
-﻿/****************************************************
-    功能：拓展工具类
-    作者：ZH
-    创建日期：#2025/01/08#
-    修改人：
-*****************************************************/
-
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using System.Reflection;

@@ -349,7 +349,12 @@ public static class ExpandTool
     /// <returns></returns>
     public static string FontColoring(this string info, Color color)
     {
-        string colorNumber = "#"+ColorUtility.ToHtmlStringRGB(color);
+        string colorNumber = "#" + ColorUtility.ToHtmlStringRGB(color);
+        return $"<color={colorNumber}>{info}</color>";
+    }
+    /// <summary> 字体上色 </summary>
+    public static string FontColoring(this string info, string colorNumber = "")
+    {
         return $"<color={colorNumber}>{info}</color>";
     }
 

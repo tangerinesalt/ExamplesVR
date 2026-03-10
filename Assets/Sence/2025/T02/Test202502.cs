@@ -19,5 +19,11 @@ public class Test202502 : MonoBehaviour
 
         PlayerManager.Instance.SetReachDistance(m_reachDistance);
         PlayerManager.Instance.SetHandProjectorState(m_isShowHandProjector);
+
+        // 在场景原点创建一个Cube
+        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.name = "Cube";
+        cube.transform.position = Vector3.zero;
+        Debug.Log("已在场景原点创建Cube".FontColoring(Color.green));
     }
 }
